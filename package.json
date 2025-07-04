@@ -1,0 +1,17 @@
+{
+  "name": "projekt",
+  "version": "1.0.0",
+  "description": "Projektarbete i DT211G - Frontend-baserad webbutveckling",
+  "source": "src/index.html",
+  "browserlist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "Christofer Hansson",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "parcel": "^2.15.4"
+  }
+}
