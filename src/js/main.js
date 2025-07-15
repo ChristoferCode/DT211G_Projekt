@@ -8,6 +8,10 @@ let sort3El = document.querySelector("#sort3");
 let sort4El = document.querySelector("#sort4");
 let valtParti = "SD";
 
+let currentPage = 1;
+let itemsPerPage = document.querySelector("#visaAntal").value;
+
+console.log(itemsPerPage);
 
 
 //Deklarerar variabler i mitt globala scope. Två tomma för array med alla kurser och för filtrerad array.
@@ -31,7 +35,26 @@ window.onload = () => {
     document.querySelector("#sort3").addEventListener("click", sortLedamoter3);
     document.querySelector("#sort4").addEventListener("click", sortLedamoter4);
     document.querySelector("#partifilter").addEventListener("change", filterByParty);
+    document.querySelector("#visaAntal").addEventListener("input", (event) => {
+        itemsPerPage = parseInt(event.target.value);
+        currentPage = 1;
+        updateTable();
+    });
 }
+
+document.querySelector("#prevPage").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        updateTable();
+    }
+});
+
+document.querySelector("#nextPage").addEventListener("click", () => {
+    if ((currentPage * itemsPerPage) < (filteredLedamoter.length || ledamoter.length)) {
+        currentPage++;
+        updateTable();
+    }
+});
 
 //Funktion som fetchar API från en url med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
 async function getLedamoter(valtParti) {
@@ -48,25 +71,45 @@ async function getLedamoter(valtParti) {
         console.log(ledamoter);
 
         //Kör funktionen dataToTables om hämtningen lyckats
-        dataToTable(ledamoter);
+        updateTable(ledamoter);
 
     } catch (error) {
         console.error("Det har uppstått ett fel: ", error);
     }
 }
 
+
+
+function updateTable() {
+    let arrayToShow = filteredLedamoter.length > 0 ? filteredLedamoter : ledamoter;
+    
+    let startIndex = (currentPage - 1) * itemsPerPage;
+    let endIndex = startIndex + itemsPerPage;
+    let currentItems = arrayToShow.slice(startIndex, endIndex);
+
+    dataToTable(currentItems);
+
+    renderPagination (ledamoter.length);
+}
+
+
 //Funktion som skriver ut objekten i mina arrayer till DOM (alla eller filtrerad samt olika sorteringar beroende på vilken data som skickas in), rad för rad till en tabell med korrekta taggar. Först rensas hela tabellen dock.
-function dataToTable(ledamoter) {
+function dataToTable(currentItems) {
 
 tbodyEl.innerHTML = "";
 
-    ledamoter.forEach(ledamot => {
+    currentItems.forEach(ledamot => {
 
         let utbildningObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Utbildning");
-         let epostObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Officiell e-postadress");
+        let anstallningarObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Anställningar");
+        let epostObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Officiell e-postadress");
 
         let utbildning = utbildningObjekt && utbildningObjekt.uppgift.length > 0
             ? utbildningObjekt.uppgift[0]
+            : "Ingen info";
+
+        let anstallningar = anstallningarObjekt && anstallningarObjekt.uppgift.length > 0
+            ? anstallningarObjekt.uppgift[0]
             : "Ingen info";
 
         let epost = epostObjekt && epostObjekt.uppgift.length > 0
@@ -80,11 +123,24 @@ tbodyEl.innerHTML = "";
         <td id="td4">${ledamot.valkrets}</td>
         <td id="td5"><a href="${ledamot.bild_url_192}" target="_blank"> <i class="fa-solid fa-up-right-from-square"></i></a></td>
         <td id="td6">${utbildning}</td>
+        <td id="td6">${anstallningar}</td>
         <td id="td6">${epost}</td>
         </tr>`;
     });
+
+    
     console.log("Här fortsätter mitt program...");
 }
+
+function renderPagination(totalItems) {
+    let totalPages = Math.ceil(totalItems / itemsPerPage);
+    document.querySelector("#pageInfo").textContent = `Sida ${currentPage} av ${totalPages}`;
+
+    document.querySelector("#prevPage").disabled = currentPage === 1;
+    document.querySelector("#nextPage").disabled = currentPage === totalPages;
+}
+
+
 
 
 //Funktion som filtrerar min array med alla kurser
@@ -103,7 +159,7 @@ function filterLedamoter() {
     console.log(filteredLedamoter);
 
     //Kör funktionen dataToTable igen men med den filtrerade arrayen
-    dataToTable(filteredLedamoter);
+    updateTable(filteredLedamoter);
 }
 
 
@@ -111,20 +167,20 @@ function filterLedamoter() {
 function sortLedamoter1() {
     if (filteredLedamoter.length > 0 && checked1 === "no") {
         const sorted1 = filteredLedamoter.sort((a, b) => a.sorteringsnamn > b.sorteringsnamn ? 1 : -1);
-        dataToTable(sorted1);
+        updateTable(sorted1);
         checked1 = "yes";
     } else if (filteredLedamoter.length == 0 && checked1 === "no") {
         const sorted1 = ledamoter.sort((a, b) => a.sorteringsnamn > b.sorteringsnamn ? 1 : -1);
-        dataToTable(sorted1);
+        updateTable(sorted1);
         checked1 = "yes";
 
     } else if (filteredLedamoter.length > 0 && checked1 === "yes") {
         const sorted1 = filteredLedamoter.sort((a, b) => b.sorteringsnamn > a.sorteringsnamn ? 1 : -1);
-        dataToTable(sorted1);
+        updateTable(sorted1);
         checked1 = "no";
     } else if (filteredLedamoter.length == 0 && checked1 === "yes") {
         const sorted1 = ledamoter.sort((a, b) => b.sorteringsnamn > a.sorteringsnamn ? 1 : -1);
-        dataToTable(sorted1);
+        updateTable(sorted1);
         checked1 = "no";
     }
 }
@@ -134,21 +190,21 @@ function sortLedamoter1() {
 function sortLedamoter2() {
     if (filteredLedamoter.length > 0 && checked2 === "no") {
         const sorted2 = filteredLedamoter.sort((a, b) => a.fodd_ar > b.fodd_ar ? 1 : -1);
-        dataToTable(sorted2);
+        updateTable(sorted2);
         checked2 = "yes";
 
     } else if (filteredLedamoter.length == 0 && checked2 === "no") {
         const sorted2 = ledamoter.sort((a, b) => a.fodd_ar > b.fodd_ar ? 1 : -1);
-        dataToTable(sorted2);
+        updateTable(sorted2);
         checked2 = "yes";
 
     } else if (filteredLedamoter.length > 0 && checked2 === "yes") {
         const sorted2 = filteredLedamoter.sort((a, b) => b.fodd_ar > a.fodd_ar ? 1 : -1);
-        dataToTable(sorted2);
+        updateTable(sorted2);
         checked2 = "no";
     } else if (filteredLedamoter.length == 0 && checked2 === "yes") {  
         const sorted2 = ledamoter.sort((a, b) => b.fodd_ar > a.fodd_ar ? 1 : -1);
-        dataToTable(sorted2);
+        updateTable(sorted2);
         checked2 = "no";
     }
 }
@@ -157,21 +213,21 @@ function sortLedamoter2() {
 function sortLedamoter3() {
     if (filteredLedamoter.length > 0 && checked3 === "no") {
         const sorted3 = filteredLedamoter.sort((a, b) => a.parti > b.parti ? 1 : -1);
-        dataToTable(sorted3);
+        updateTable(sorted3);
         checked3 = "yes";
 
     } else if (filteredLedamoter.length == 0 && checked3 === "no") {
         const sorted3 = ledamoter.sort((a, b) => a.parti > b.parti ? 1 : -1);
-        dataToTable(sorted3);
+        updateTable(sorted3);
         checked3 = "yes";
 
     } else if (filteredLedamoter.length > 0 && checked3 === "yes") {
         const sorted3 = filteredLedamoter.sort((a, b) => b.parti > a.parti ? 1 : -1);
-        dataToTable(sorted3);
+        updateTable(sorted3);
         checked3 = "no";
     } else if (filteredLedamoter.length == 0 && checked3 === "yes") {  
         const sorted3 = ledamoter.sort((a, b) => b.parti > a.parti ? 1 : -1);
-        dataToTable(sorted3);
+        updateTable(sorted3);
         checked3 = "no";
     }
 }
@@ -181,20 +237,20 @@ function sortLedamoter3() {
 function sortLedamoter4() {
     if (filteredLedamoter.length > 0 && checked4 === "no") {
         const sorted4 = filteredLedamoter.sort((a, b) => a.valkrets > b.valkrets ? 1 : -1);
-        dataToTable(sorted4);
+        updateTable(sorted4);
         checked4 = "yes";
     } else if (filteredLedamoter.length == 0 && checked4 === "no") {
         const sorted4 = ledamoter.sort((a, b) => a.valkrets > b.valkrets ? 1 : -1);
-        dataToTable(sorted4);
+        updateTable(sorted4);
         checked4 = "yes";
 
     } else if (filteredLedamoter.length > 0 && checked4 === "yes") {
         const sorted4 = filteredLedamoter.sort((a, b) => b.valkrets > a.valkrets ? 1 : -1);
-        dataToTable(sorted4);
+        updateTable(sorted4);
         checked4 = "no";
     } else if (filteredLedamoter.length == 0 && checked4 === "yes") {  
         const sorted4 = ledamoter.sort((a, b) => b.valkrets > a.valkrets ? 1 : -1);
-        dataToTable(sorted4);
+        updateTable(sorted4);
         checked4 = "no";
     }
 }

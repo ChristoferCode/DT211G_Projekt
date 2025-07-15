@@ -25,7 +25,7 @@
     <div id="startcontainer">
         <header>
             <div id="header">
-                <p id="headertext"><a href="index.html" id="start">Startsida</a></p>
+                <p id="headertext"><a href="index.html" id="start">Start</a></p>
 
                 <button id="open-menu">
                     <span class="menutextopen">Meny</span>
@@ -74,13 +74,13 @@
             <div class="images2">
 
                 <picture>
-                    <source srcset="images/drops.jpg?as=avif" type="image/avif" />
-                    <img src="images/drops.jpg" class="startimage" width=1250 alt="Droppar mot glasruta med svart bakgrund" />
+                    <source srcset="images/Riksdagen.jpg?as=avif" type="image/avif" />
+                    <img src="images/Riksdagen.jpg" class="startimage" width=1250 alt="Droppar mot glasruta med svart bakgrund" />
                 </picture>
 
             </div>
 
-            <h1 class="bigheadline">Projekt mashup</h1>
+            <h1 class="bigheadline">Sveriges Riksdag</h1>
 
             <div class="brod">
             <h2 class="ramschema">Ledamöter i Riksdagen</h2>
@@ -92,6 +92,7 @@
             <label for="partifilter" class="partifilter">Parti:</label>
             <select id="partifilter" >
                 <option value="X">Välj parti...</option>
+                <option value="">Alla partier</option>
                 <option value="C">Centerpartiet</option>
                 <option value="KD">Kristdemokraterna</option>
                 <option value="L">Liberalerna</option>
@@ -103,6 +104,18 @@
                 <option value="-">Utan partibeteckning</option>
             </select>
 
+            <label for="visaAntal" class="visaAntal">Antal per sida</label>
+            <input type="range" id="visaAntal" value="10" name="visaAntal" min="5" max="100" step="5" oninput="this.nextElementSibling.value = this.value">
+            <output>10</output>
+
+
+
+        <div id="pagination">
+            <button id="prevPage">Föregående</button>
+            <span id="pageInfo"></span>
+            <button id="nextPage">Nästa</button>
+        </div>
+
             <table>
                 <thead>
                     <tr>
@@ -112,7 +125,8 @@
                         <th id="sort4"><i class="fa-solid fa-sort"></i> Valkrets</th>
                         <th id="sort5">Bild</th>
                         <th id="sort6"><i class="fa-solid fa-sort"></i> Utbildning</th>
-                        <th id="sort7"><i class="fa-solid fa-sort"></i> E-post</th>
+                        <th id="sort7"><i class="fa-solid fa-sort"></i> Anställningar</th>
+                        <th id="sort8"><i class="fa-solid fa-sort"></i> E-post</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,6 +146,9 @@
                 </tfoot>
             </table>
         </div>
+
+
+       
             
             <div class="brod">
                 <h2>Denna uppgift går ut på att:</h2>
