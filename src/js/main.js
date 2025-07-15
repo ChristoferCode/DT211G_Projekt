@@ -61,7 +61,27 @@ function dataToTable(ledamoter) {
 tbodyEl.innerHTML = "";
 
     ledamoter.forEach(ledamot => {
-        tbodyEl.innerHTML += `<tr><td id="td1">${ledamot.sorteringsnamn}</td><td id="td2">${ledamot.fodd_ar}</td><td id="td3">${ledamot.parti}</td><td id="td4">${ledamot.valkrets}</td><td id="td5"><a href="${ledamot.bild_url_192}" target="_blank"> <i class="fa-solid fa-up-right-from-square"></i></a></td></tr>`;
+
+        let utbildningObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Utbildning");
+         let epostObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Officiell e-postadress");
+
+        let utbildning = utbildningObjekt && utbildningObjekt.uppgift.length > 0
+            ? utbildningObjekt.uppgift[0]
+            : "Ingen info";
+
+        let epost = epostObjekt && epostObjekt.uppgift.length > 0
+            ? `<a href="mailto:${epostObjekt.uppgift[0].replace("[på]", "@")}">${epostObjekt.uppgift[0].replace("[på]", "@")}</a>`
+            : "Ingen info";
+
+        tbodyEl.innerHTML += `<tr>
+        <td id="td1">${ledamot.sorteringsnamn}</td>
+        <td id="td2">${ledamot.fodd_ar}</td>
+        <td id="td3">${ledamot.parti}</td>
+        <td id="td4">${ledamot.valkrets}</td>
+        <td id="td5"><a href="${ledamot.bild_url_192}" target="_blank"> <i class="fa-solid fa-up-right-from-square"></i></a></td>
+        <td id="td6">${utbildning}</td>
+        <td id="td6">${epost}</td>
+        </tr>`;
     });
     console.log("Här fortsätter mitt program...");
 }
