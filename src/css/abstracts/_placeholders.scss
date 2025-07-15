@@ -1,0 +1,13 @@
+//Testar användning av placeholders men Parcel kraschar bara när jag enbart har dem här...externa placeholders tycks inte fungera när de används i en media query
+
+%default {
+    margin: 0;
+    padding: 0;
+}
+
+%bar-animation {
+    animation-duration: 1s;
+    animation-fill-mode:both;
+    animation-play-state: paused;
+    animation-direction: normal;
+}

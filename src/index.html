@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -7,11 +8,189 @@
 
     <link rel="stylesheet" href="css/index.scss">
 
-    <script src="js/main.js" type="module"></script>
 
-    <title>Projekt mashup</title>
+
+    <script src="js/main.js" type="module"></script>
+    <script src="js/menu.js" type="module"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agu+Display&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/ba145e4c91.js" crossorigin="anonymous"></script>
+
+    <title>DT211G - Projekt mashup</title>
 </head>
 <body>
-    <h1>Projekt Mashup</h1>
+    <div id="startcontainer">
+        <header>
+            <div id="header">
+                <p id="headertext"><a href="index.html" id="start">Startsida</a></p>
+
+                <button id="open-menu">
+                    <span class="menutextopen">Meny</span>
+                    <span id="open-menu-icon">
+                        <span class="bar1"></span>
+                        <span class="bar2"></span>
+                        <span class="bar3"></span>
+                    </span>
+                </button>
+
+                <button id="close-menu">
+                    <span class="menutextclose">Stäng</span>
+                    <span id="close-menu-icon">
+                        <span class="bar1close"></span>
+                        <span class="bar2close"></span>
+                        <span class="bar3close"></span>
+                    </span>
+                </button>
+
+                <nav>
+
+                    <ul id="menu">
+                        <li>
+                            <a href="#" class="link"><div class="linkbutton">Link 1</div></a>
+                        </li>
+                        <li>
+                            <a href="#" class="link"><div class="linkbutton">Link 2</div></a>
+                        </li>
+                        <li>
+                            <a href="#" class="link"><div class="linkbutton">Link 3</div></a>
+                        </li>
+                        <li>
+                            <a href="#" class="link"><div class="linkbutton">Link 4</div></a>
+                        </li>
+                        <li>
+                            <a href="#" class="link"><div class="linkbutton">Link 5</div></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+    <section>
+        <div id="main">
+
+            <div class="images2">
+
+                <picture>
+                    <source srcset="images/drops.jpg?as=avif" type="image/avif" />
+                    <img src="images/drops.jpg" class="startimage" width=1250 alt="Droppar mot glasruta med svart bakgrund" />
+                </picture>
+
+            </div>
+
+            <h1 class="bigheadline">Projekt mashup</h1>
+
+            <div class="brod">
+            <h2 class="ramschema">Ledamöter i Riksdagen</h2>
+
+            
+            <label for="search" class="search">Sök:</label>
+            <input type="text" id="search" name="search" placeholder="Sök för- eller efternamn">
+
+            <label for="partifilter" class="partifilter">Parti:</label>
+            <select id="partifilter" >
+                <option value="X">Välj parti...</option>
+                <option value="C">Centerpartiet</option>
+                <option value="KD">Kristdemokraterna</option>
+                <option value="L">Liberalerna</option>
+                <option value="MP">Miljöpartiet</option>
+                <option value="M">Moderaterna</option>
+                <option value="SD">Sverigedemokraterna</option>
+                <option value="S">Socialdemokraterna</option>
+                <option value="V">Vänsterpartiet</option>
+                <option value="-">Utan partibeteckning</option>
+            </select>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th id="sort1"><i class="fa-solid fa-sort"></i> Sorteringsnamn</th>
+                        <th id="sort2"><i class="fa-solid fa-sort"></i> Födelseår</th>
+                        <th id="sort3"><i class="fa-solid fa-sort"></i> Parti</th>
+                        <th id="sort4"><i class="fa-solid fa-sort"></i> Valkrets</th>
+                        <th id="sort5">Bild</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>test1</td>
+                        <td>test2</td>
+                        <td>test3</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+            
+            <div class="brod">
+                <h2>Denna uppgift går ut på att:</h2>
+
+                    <p class="brodtext2">
+                    • Använda <strong>FetchAPI-anrop</strong> tillsammans med <strong>async/await</strong> och <strong>try/catch</strong><br><br>
+                    • Träna på att <strong>sortera</strong> och <strong>filtrera</strong> data<br><br>
+                    • Praktiskt använda utvecklings-miljön jag skapade i tidigare moment<br><br>
+                    • Använda <strong>Git</strong> för <strong>versionshantering</strong><br><br>
+                    </p>
+                <p class="brodtext">
+                  Mitt <strong>Git-repository</strong> är kopplat till mitt <strong>Netlify-konto</strong> och så fort main-branch uppdateras så uppdateras denna webbplats som är publicerad via <strong>Netlify</strong>. Under tiden jag utvecklar min webbplats jobbar jag mot dev-branch för versionshantering men detta publiceras alltså inte. När jag vill publicera så mergar jag ihop dev och main så att main syncar mina senaste uppdateringar i dev.
+                </p>
+                
+                
+            </div>
+  
+            <div id="logos">
+                <div id="logo1">
+                    <img src="logos/Git-Logo-2Color.png" class="logos" width=100 alt="Git logo" />
+                </div>
+                <div id="logo2">
+                    <img src="logos/nodejsStackedDark.png" class="logos" width=100 alt="Node.js logo"/>
+                </div>
+                <div id="logo3">
+                    <div id="box"><img src="logos/parcelbox.png"  class="logos" width=40 alt="Parcel box logo"/></div>
+
+                    <div><img src="logos/logo_red.png" class="logos" width=100 alt="Parcel text logo"/></div>
+                </div>
+                <div id="logo4">
+                    <div id="cat"><img src="logos/github-mark.png" class="logos" width=35 alt="Github cat logo"/></div>
+
+                    <div><img src="logos/GitHub_Logo.png" class="logos" width=100 alt="Github text lgoo"/></div>
+                </div>
+                <div id="logo5">
+                    <img src="logos/logo-netlify-large-fullcolor-lightmode.png" class="logos" width=100 alt="Netlify logo"/>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        
+        <div id="footer">
+
+            <p id="footertext">Denna webbplats är skapad av <a href="https://github.com/ChristoferCode" id="mingithub"><span id="name">Christofer Hansson</span></a> 2025, för Projektet i kursen DT211G, Frontend-baserad webbutveckling på Webbutvecklingsprogrammet vid Mittuniversitetet. </p>
+            
+            <div id="netlify">
+                    
+                    <div id="logo6">
+                        <a href="https://github.com/ChristoferCode"><img src="logos/github-mark-white.png" class="logos" width=50 alt="Github cat logo"/></a>
+                    </div>  
+
+
+                <a href="https://www.netlify.com"> <img src="https://www.netlify.com/v3/img/components/netlify-color-accent.svg" alt="Deploys by Netlify" /> </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+</div>
 </body>
 </html>

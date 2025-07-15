@@ -1,0 +1,68 @@
+//Testar använding av nesting
+
+#logos {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+
+    #logo1 {
+        margin-top: 5px;
+    }
+
+    #logo3 {
+        display: flex;
+        margin-top: 10px;
+        gap:10px;
+
+        #box {
+            margin-top: -5px;
+        }
+    }
+
+    #logo4 {
+        display: flex;
+        gap:0px;
+
+        #cat {
+            margin-top: 2px;
+        }
+    }
+}
+
+#logosdarktheme {
+    display: none;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+
+    #logo1dark {
+        margin-top: 5px;
+    }
+
+    #logo3dark {
+        display: flex;
+        margin-top: 10px;
+        gap:10px;
+
+        #boxdark {
+            margin-top: -5px;
+        }
+    }
+
+    #logo4dark {
+        display: flex;
+        gap:0px;
+
+        #catdark {
+            margin-top: 2px;
+        }
+    }
+}
+
+
+
+
+

@@ -1,0 +1,215 @@
+.ramschema {
+    margin-bottom: 50px;
+    font-size: 3.4rem;
+}
+
+.search {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+#search {
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}
+
+#sort1 {
+    width: 25%;
+}
+
+#sort2 {
+    width: 25%;
+}
+
+#sort3 {
+    width: 30%;
+}
+
+#sort4 {
+    width: 15%;
+}
+
+#sort1:hover {
+    background-color: rgb(164, 255, 225);
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    cursor: pointer;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+#sort2:hover {
+    background-color: rgb(164, 255, 225);
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    cursor: pointer;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+#sort3:hover {
+    background-color: rgb(164, 255, 225);
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    cursor: pointer;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+#sort4:hover {
+    background-color: rgb(164, 255, 225);
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    cursor: pointer;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+table {
+    border: 15px solid rgb(64, 255, 191);
+    margin: 0 auto;
+    margin-bottom: 100px;
+    max-width: 700px;
+    min-width: 350px;
+    border-collapse: collapse;
+    box-shadow: rgb(0, 0, 0) 0px 2px 8px;
+}
+
+thead {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 3.0rem;
+    text-align: left;
+    padding: 10px;
+    background-color: rgb(64, 255, 191);
+}
+
+th {
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+tbody {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    background-color: black;
+    color: rgb(64, 255, 191);
+}
+
+td {
+    padding: 10px;
+}
+
+#td3 {
+    text-align: center;
+}
+
+#td4 {
+    text-align: center;
+}
+
+td a {
+    text-decoration: none;
+    display: block;
+    color: rgb(64, 255, 191);
+}
+
+td a:hover {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+td a:visited {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(3, 159, 26);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+tr {
+    box-shadow: rgb(64, 255, 191) 0px 2px 8px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(56, 56, 56);
+    box-shadow: rgb(64, 255, 191) 0px -2px 8px;
+}
+
+tbody > tr:hover {
+    background-color: rgb(164, 255, 225);
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+tbody > tr:hover a {
+    background-color: rgb(164, 255, 225);
+    color: rgb(0, 91, 61);
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px;
+}
+
+tfoot {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    text-align: left;
+    padding: 10px;
+    background-color: rgb(64, 255, 191);
+    border-top: 2px solid black;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    thead {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+        text-align: left;
+        padding: 10px;
+        background-color: rgb(64, 255, 191);
+    }
+
+    tbody {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+        background-color: black;
+        color: rgb(64, 255, 191);
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    thead {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0rem;
+        line-height: 2.0rem;
+        text-align: left;
+        padding: 10px;
+        background-color: rgb(64, 255, 191);
+    }
+
+    tbody {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.0rem;
+        line-height: 2.0rem;
+        background-color: black;
+        color: rgb(64, 255, 191);
+    }
+}
+
+@media only screen and (max-width: 470px) {
+
+    table {
+        margin-left: -10px;
+        margin-right: auto;
+    }
+
+}

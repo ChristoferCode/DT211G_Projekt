@@ -1,0 +1,92 @@
+@use "../abstracts/variables" as *;
+
+
+//Färgschema för mörkt tema
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: $bodybg-color-dark;
+    }
+
+    #main {
+        background-color: $mainbg-color-dark;
+    }
+
+    .bigheadline {
+        color: $bigheadline-color-dark;
+        -webkit-text-stroke: 2px $bigheadline-stroke-dark;
+        text-shadow: $bigheadline-shadow-dark 1px 1px 20px;
+    }
+
+    .bigheadline2 {
+        color: $bigheadline-color-dark;
+        -webkit-text-stroke: 2px $bigheadline-stroke-dark;
+        text-shadow: $bigheadline-shadow-dark 1px 1px 20px;
+    }
+
+    .bigheadlineanimate {
+        color: $bigheadline-color-dark;
+        -webkit-text-stroke: 2px $bigheadline-stroke-dark;
+        text-shadow: $bigheadline-shadow-dark 1px 1px 20px;
+    }
+
+    .bigheadline2animate {
+        color: $bigheadline-color-dark;
+        -webkit-text-stroke: 2px $bigheadline-stroke-dark;
+        text-shadow: $bigheadline-shadow-dark 1px 1px 20px;
+    }
+
+    h2 {
+        color: $h2-color-dark;
+    }
+
+    .who {
+        color: $h2-color-dark;
+    }
+
+    #lookalikeh2 {
+        color: $h2-color-dark;
+    }
+
+    .countdown {
+        color: $h2-color-dark;
+    }
+
+    .brodtext {
+        color: $brodtext-color-dark;
+    }
+
+    .brodtext2 {
+        color: $brodtext-color-dark;
+    }
+
+    #impossiblebutton {
+        border: 2px solid $buttonfromright-bordercolor-dark;
+    }
+
+    .buttonfromright {
+        border: 2px solid $buttonfromright-bordercolor-dark;
+    }
+
+    .buttonfromright:hover {
+        box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    }
+
+    #logos {
+        display: none;
+    }
+
+    #logosdarktheme {
+        display: flex;
+    }
+
+    #logosshake {
+        display: none;
+    }
+
+    #logosdarkthemeshake {
+        display: flex;
+    }
+
+}

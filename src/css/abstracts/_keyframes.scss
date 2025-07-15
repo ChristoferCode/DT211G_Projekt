@@ -1,0 +1,747 @@
+//Lägger alla mina keyframes till animeringarna i denna fil (utom till hamburgermenyn
+
+
+
+
+// @keyframes rotateGradient {
+//     0% {
+//         filter: hue-rotate(0deg);
+//     }
+//     90% {
+//         filter: hue-rotate(0deg);
+//     }
+//     100% {
+//         filter: hue-rotate(360deg);
+//     }
+// }
+
+
+//Sengångare som glider längs linjen och faller
+
+@keyframes slothwalk {
+    0% {
+        transform: translate(0, 0);
+    }
+    82% {
+        transform: translate(500%, 0);
+    } 
+    90% {
+        transform: translate(500%, 0);
+    }
+    99% {
+        transform: translate(500%, 750%);
+        opacity: 100%;    
+    }
+    100% {
+        transform: translate(500%, 750%);
+        opacity: 0%;    
+    }
+}
+
+@keyframes slothwalk2 {
+    0% {
+        transform: translate(0, -45%);
+        opacity: 0%;    
+    }
+  
+    99% {
+        transform: translate(400%, -45%);
+        opacity: 0%;    
+    }
+    100% {
+        transform: translate(400%, -45%);
+        opacity: 100%;    
+    }
+}
+
+
+//Rubrik som trillar ner
+
+@keyframes crashdown {
+    0% {
+        transform: translateY(0);
+    }
+    28% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: rotate(4deg);
+        transform-origin: left;
+    }
+    40% {
+        transform: rotate(4deg);
+        transform-origin: left;
+    }
+    50% {
+        transform: rotate(-5deg);
+        transform-origin: right;
+        transform: translateY(25%);
+    }
+    55% {
+        transform: translate(1%, 25%);
+    }
+    60% {
+        transform: translate(-1%, 25%);
+    }
+    65% {
+        transform: translate(1%, 25%);
+    }
+    70% {
+        transform: translate(-1%, 25%);
+    }
+    75% {
+        transform: translate(1%, 25%);
+    }
+    80% {
+        transform: translate(-1%, 25%);
+    }
+    85% {
+        transform: translate(1%, 25%);
+    }
+    90% {
+        transform: translate(-1%, 25%);
+    }
+    100% {
+        transform: translateY(110%);
+    }
+}
+
+
+@keyframes crashdown2 {
+    0% {
+        transform: rotate(0deg);
+        transform-origin: left;
+    }
+    30% {
+        transform: rotate(0deg);
+        transform-origin: left;
+    }
+    31% {
+        transform: rotate(1deg);
+        transform-origin: left;
+    }
+    40% {
+        transform: rotate(1deg);
+        transform-origin: left;
+    }
+    50% {
+        transform: rotate(-1deg);
+        transform-origin: right;
+    }
+    55% {
+        transform: translate(1%, 0%);
+    }
+    60% {
+        transform: translate(-1%, 0%);
+    }
+    65% {
+        transform: translate(1%, 0%);
+    }
+    70% {
+        transform: translate(-1%, 0%);
+    }
+    75% {
+        transform: translate(1%, 0%);
+    }
+    80% {
+        transform: translate(-1%, 0%);
+    }
+    85% {
+        transform: translate(1%, 0%);
+    }
+    90% {
+        transform: translate(-1%, 0%);
+    }
+    100% {
+        transform: translateY(65%);
+    }
+}
+
+
+@keyframes crashdown3 {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(485%);
+    }
+}
+
+
+//Bild som flimrar och slocknar
+
+@keyframes hue-rotate-light {
+    0% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+        mix-blend-mode:normal;
+    }
+    35% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+        mix-blend-mode:normal;
+    }
+    47% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+        mix-blend-mode:normal;
+    }
+    48% {
+        filter: hue-rotate(-360deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 100px;
+        mix-blend-mode:hard-light;
+    }
+    49% {
+        filter: hue-rotate(360deg);
+        box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 100px;
+        mix-blend-mode:normal;
+    }
+    50% {
+        filter: hue-rotate(-360deg);
+        box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 100px;
+        mix-blend-mode:normal;
+    }
+    51% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+        mix-blend-mode: screen;
+    } 
+    69% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+        mix-blend-mode: screen;
+    } 
+    70% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 20px;
+        mix-blend-mode:normal;
+    }
+    71% {
+        filter: hue-rotate(-360deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 100px;
+        mix-blend-mode:hard-light;
+    }
+    72% {
+        filter: hue-rotate(360deg);
+        box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 100px;
+        mix-blend-mode:normal;
+    }
+    73% {
+        filter: hue-rotate(-360deg);
+        box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 100px;
+        mix-blend-mode:normal;
+    }
+    74% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+        mix-blend-mode:normal;
+    }
+    75% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+        mix-blend-mode: screen;
+    }
+    80% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+        mix-blend-mode: screen;
+    }  
+    81% {
+        filter: hue-rotate(360deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+        mix-blend-mode:normal;
+    }
+    82% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+        mix-blend-mode:normal;
+    }
+    100% {
+        filter: hue-rotate(0deg);
+        box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+        mix-blend-mode:normal;
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    @keyframes hue-rotate-light {
+        0% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+            mix-blend-mode:normal;
+        }
+        35% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+            mix-blend-mode:normal;
+        }
+        47% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+            mix-blend-mode:normal;
+        }
+        48% {
+            filter: hue-rotate(-360deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 100px;
+            mix-blend-mode:hard-light;
+        }
+        49% {
+            filter: hue-rotate(360deg);
+            box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 100px;
+            mix-blend-mode:normal;
+        }
+        50% {
+            filter: hue-rotate(-360deg);
+            box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 100px;
+            mix-blend-mode:normal;
+        }
+        51% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+            mix-blend-mode: multiply;
+        } 
+        69% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+            mix-blend-mode: multiply;
+        } 
+        70% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 20px;
+            mix-blend-mode:normal;
+        }
+        71% {
+            filter: hue-rotate(-360deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 100px;
+            mix-blend-mode:hard-light;
+        }
+        72% {
+            filter: hue-rotate(360deg);
+            box-shadow: rgba(255, 0, 0, 0.8) 0px 0px 100px;
+            mix-blend-mode:normal;
+        }
+        73% {
+            filter: hue-rotate(-360deg);
+            box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 100px;
+            mix-blend-mode:normal;
+        }
+        74% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+            mix-blend-mode:normal;
+        }
+        75% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+            mix-blend-mode: multiply;
+        }
+        80% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 0px;
+            mix-blend-mode: multiply;
+        }  
+        81% {
+            filter: hue-rotate(360deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+            mix-blend-mode:normal;
+        }
+        82% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 50px;
+            mix-blend-mode:normal;
+        }
+        100% {
+            filter: hue-rotate(0deg);
+            box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+            mix-blend-mode:normal;
+        }
+    }
+}
+
+
+//Fejk-knapp som flyttar sig hela tiden
+
+@keyframes impossible {
+    0% {
+       transform: translate(0px, 0px);
+    }
+    10% {
+        transform: translate(30px, -40px);
+    }
+    20% {
+        transform: translate(90px, 90px);
+    }
+    30% {
+        transform: translate(-50px, -190px);
+    }
+    40% {
+        transform: translate(-150px, 30px);
+    }
+    50% {
+        transform: translate(50px, 290px);
+    }
+    60% {
+        transform: translate(0px, -190px);
+    }
+    70% {
+        transform: translate(-50px, -390px);
+    }
+    80% {
+        transform: translate(200px, -100px);
+    }
+    90% {
+        transform: translate(-50px, 20px);
+    }
+    100% {
+        transform: translate(60px, -20px);
+    }
+}
+
+
+//Skakande logtyper
+
+@keyframes bouncelogo {
+    0% {
+        transform: rotate(0deg);
+    }
+    89% {
+        transform: rotate(0deg);
+    }
+    90% {
+        transform: rotate(-10deg);
+    }
+    92% {
+        transform: rotate(8deg);
+    }
+    94% {
+        transform: rotate(-6deg);
+    }
+    96% {
+        transform: rotate(4deg);
+    }
+    97% {
+        transform: rotate(-3deg);
+    }
+    98% {
+        transform: rotate(2deg);
+    }
+    99% {
+        transform: rotate(-1deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+//Inspirerats av rörlig gradient härifrån: https://stackoverflow.com/questions/57218443/how-to-animate-a-radial-gradient-using-css
+
+@property --x {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+  }
+  
+@keyframes buttonGradient {
+    0% {
+    --x:0%
+    }
+    50% {
+    --x:50%
+    }
+    100% {
+    --x:100%
+    }
+}
+
+
+//Knappar som kommer in från höger efter "chatbot"-frågor/kommentarer
+@keyframes buttonfromright {
+    0% {
+        transform: matrix(1,0,0,1,1000,0);
+    }
+    70% {
+        transform: matrix(1,0,0.5,1,-50,0);
+    }
+    100% {
+        transform:translateX(0px);
+    }
+}
+
+
+//Metaldörr som stänger sidan
+
+@keyframes closinggate {
+    0% {
+        transform: translateY(100vh);
+    }
+    100% {
+        transform: translateY(0vh);
+    }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1140px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(475%);
+        }
+    }
+}
+
+@media only screen and (max-width: 1040px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(465%);
+        }
+    }
+}
+
+@media only screen and (max-width: 940px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(450%);
+        }
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(435%);
+        }
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(430%);
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(425%);
+        }
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(425%);
+        }
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    
+    @keyframes crashdown3 {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(0px);
+        }
+        100% {
+            transform: translateY(315%);
+        }
+    }
+
+    @keyframes crashdown {
+        0% {
+            transform: translateY(0);
+        }
+        28% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: rotate(4deg);
+            transform-origin: left;
+        }
+        40% {
+            transform: rotate(4deg);
+            transform-origin: left;
+        }
+        50% {
+            transform: rotate(-5deg);
+            transform-origin: right;
+            transform: translateY(20%);
+        }
+        55% {
+            transform: translate(1%, 25%);
+        }
+        60% {
+            transform: translate(-1%, 25%);
+        }
+        65% {
+            transform: translate(1%, 25%);
+        }
+        70% {
+            transform: translate(-1%, 25%);
+        }
+        75% {
+            transform: translate(1%, 25%);
+        }
+        80% {
+            transform: translate(-1%, 25%);
+        }
+        85% {
+            transform: translate(1%, 25%);
+        }
+        90% {
+            transform: translate(-1%, 25%);
+        }
+        100% {
+            transform: translateY(120%);
+        }
+    }
+
+    @keyframes crashdown2 {
+        0% {
+            transform: rotate(0deg);
+            transform-origin: left;
+        }
+        30% {
+            transform: rotate(0deg);
+            transform-origin: left;
+        }
+        31% {
+            transform: rotate(1deg);
+            transform-origin: left;
+        }
+        40% {
+            transform: rotate(1deg);
+            transform-origin: left;
+        }
+        50% {
+            transform: rotate(-1deg);
+            transform-origin: right;
+        }
+        55% {
+            transform: translate(1%, 0%);
+        }
+        60% {
+            transform: translate(-1%, 0%);
+        }
+        65% {
+            transform: translate(1%, 0%);
+        }
+        70% {
+            transform: translate(-1%, 0%);
+        }
+        75% {
+            transform: translate(1%, 0%);
+        }
+        80% {
+            transform: translate(-1%, 0%);
+        }
+        85% {
+            transform: translate(1%, 0%);
+        }
+        90% {
+            transform: translate(-1%, 0%);
+        }
+        100% {
+            transform: translateY(100%);
+        }
+    }
+}
+
+
+
+  //Sengångare som glider längs linjen och faller
+
+  @media only screen and (max-width: 420px) {
+    
+
+    @keyframes slothwalk {
+        0% {
+            transform: translate(10%, -310%);
+        }
+        82% {
+            transform: translate(500%, -310%);
+        } 
+        90% {
+            transform: translate(500%, -310%);
+        }
+        99% {
+            transform: translate(500%, 750%);
+            opacity: 100%;    
+        }
+        100% {
+            transform: translate(500%, 750%);
+            opacity: 0%;    
+        }
+    }
+    
+    @keyframes slothwalk2 {
+        0% {
+            transform: translate(0, -50%);
+            opacity: 0%;    
+        }
+      
+        99% {
+            transform: translate(400%, -50%);
+            opacity: 0%;    
+        }
+        100% {
+            transform: translate(400%, -50%);
+            opacity: 100%;    
+        }
+    }
+
+  }

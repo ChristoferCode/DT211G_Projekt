@@ -1,0 +1,604 @@
+@use "../abstracts/keyframes";
+
+
+
+//Sengångare som glider längs linjen och faller
+
+.image4 {
+    max-width: 20%;
+}
+
+.startimage4 {
+    max-width: 15%;
+    position: absolute;
+    top: -30%;
+    left: 5%;
+    animation-name: slothwalk;
+    animation-duration: 19.5s;
+    animation-fill-mode: none;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 1s;
+}
+
+.image5 {
+    max-width: 20%;
+}
+
+.startimage5 {
+    max-width: 20%;
+    position: relative;
+    transform: translateY(-45%);
+    left: 5%;
+    animation-name: slothwalk2;
+    animation-duration: 19.5s;
+    animation-fill-mode: none;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+    animation-delay: 1s;
+    opacity: 0%;
+}
+
+
+//Rubrik som trillar ner
+
+.bigheadlineanimate {
+    animation: crashdown;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 18000ms;
+}
+
+.bigheadline2animate {
+    animation: crashdown2;
+    animation-duration:2000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 18000ms;
+}
+
+#crashtext {
+    animation: crashdown3;
+    animation-duration:1000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 24800ms;
+}
+
+
+//Bild som flimrar och slocknar
+
+.image3 {
+    max-width: 100%;
+}
+
+.startimage3 {
+    max-width: 100%;
+    box-shadow: rgba(255, 255, 0, 0.8) 0px 0px 10px;
+    margin-top: 0px;
+
+    animation-name: hue-rotate-light;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-delay: 10s;
+}
+
+
+//Fejk-knapp som flyttar sig hela tiden
+
+#impossiblebutton {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid rgb(34, 4, 37);
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 160px;
+    margin-bottom: 100px;
+    background-image: linear-gradient(to right, rgb(119, 14, 131) , rgb(202, 28, 222), rgb(119, 14, 131));
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+
+    animation-name: impossible;
+    animation-duration: 2000ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+
+//Chatbot frågor/kommentarer och svar-knappar
+
+#answer {
+    margin-bottom: 30px;
+}
+
+#tackbutton {
+    display: none;
+    animation-name: buttonfromright;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#tack {
+    width: 150px;
+}
+
+
+//Inspirerats av rörlig gradient härifrån: https://stackoverflow.com/questions/57218443/how-to-animate-a-radial-gradient-using-css
+
+.buttonfromright {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid rgb(34, 4, 37);
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-image: radial-gradient(ellipse farthest-corner at var(--x) 0%, rgb(119, 14, 131) 0%, rgb(202, 28, 222) 50%, rgb(119, 14, 131) 100%);
+    border-radius: 10px;
+    justify-content: center;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.buttonfromright:hover {
+    box-shadow: rgb(255, 102, 245) 0px 2px 8px;
+
+    transform: scale(1.20);
+    animation-name: buttonGradient;
+    animation-duration: 200ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+} 
+
+#answer2 {
+    margin-bottom: 30px;
+}
+
+#njaabutton {
+    display: none;
+    animation-name: buttonfromright;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#njaa {
+    width: 200px;
+}
+
+// #njaa:hover {
+//     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+
+//     transform: scale(1.20);
+//     animation-name: buttonGradient;
+//     animation-duration: 200ms;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+// } 
+
+#answer3 {
+    margin-bottom: 30px;
+}
+
+#okeeejbutton {
+    display: none;
+    animation-name: buttonfromright;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#okeeej {
+    width: 150px;
+}
+
+// #okeeej:hover {
+//     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+
+//     transform: scale(1.20);
+//     animation-name: buttonGradient;
+//     animation-duration: 200ms;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+// } 
+
+#lookalike {
+    display: none;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+#lookalikeh2 {
+    
+}
+
+
+.mattias {
+
+}
+
+.mattin {
+    
+}
+
+.malin {
+    
+}
+
+.malias {
+    
+}
+
+
+
+/* Kod inspirerad från https://www.w3schools.com/howto/howto_css_flip_image.asp */
+
+#flipbilder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 50px;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+.flip-box1 {
+    background-color: transparent;
+    width: 300px;
+    height: 500px;
+    perspective: 1000px;
+}
+  
+.flip-box-inner1 {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+  
+.flip-box1:hover .flip-box-inner1 {
+    transform: rotateY(180deg);
+    box-shadow: rgb(255, 102, 245)0px 0px 40px;
+    cursor: help;
+}
+
+.flip-box1:focus .flip-box-inner1 {
+    transform: rotateY(180deg);
+    box-shadow: rgb(255, 102, 245) 0px 0px 40px;
+    cursor: help;
+}
+  
+.flip-box-front1, .flip-box-back1 {
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+}
+  
+.flip-box-front1 {
+    background-color: #bbb;
+    color: black;
+}
+  
+.flip-box-back1 {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+
+
+#reactionbuttons {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    animation-name: buttonfromright;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#reaction1button {
+    display: flex;   
+}
+
+#like {
+    width: 200px;
+}
+
+// #like:hover {
+//     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+
+//     transform: scale(1.20);
+//     animation-name: buttonGradient;
+//     animation-duration: 200ms;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+// } 
+
+#reaction2button {
+    display: flex;
+}
+
+#dislike {
+    width: 200px;
+}
+
+// #dislike:hover {
+//     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+
+//     transform: scale(1.20);
+//     animation-name: buttonGradient;
+//     animation-duration: 200ms;
+//     animation-iteration-count: infinite;
+//     animation-direction: alternate;
+// } 
+
+
+
+//Skakande logtyper
+
+#logo7shake {
+    animation-name: bouncelogo;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-delay: 0ms;
+}
+
+#logo1shake {
+    @extend #logo7shake;
+    animation-delay: 200ms;
+}
+
+#logo2shake {
+    @extend #logo7shake;
+    animation-delay: 400ms;
+}
+
+#logo3shake {
+    @extend #logo7shake;
+    animation-delay: 600ms;
+}
+
+#logo4shake {
+    @extend #logo7shake;
+    animation-delay: 800ms;
+}
+
+#logo5shake {
+    @extend #logo7shake;
+    animation-delay: 1000ms;
+}
+
+#logo7darkshake {
+    @extend #logo7shake;
+    animation-delay: 0ms;
+}
+
+#logo1darkshake {
+    @extend #logo7shake;
+    animation-delay: 200ms;
+}
+
+#logo2darkshake {
+    @extend #logo7shake;
+    animation-delay: 400ms;
+}
+
+#logo3darkshake {
+    @extend #logo7shake;
+    animation-delay: 600ms;
+}
+
+#logo4darkshake {
+    @extend #logo7shake;
+    animation-delay: 800ms;
+}
+
+#logo5darkshake {
+    @extend #logo7shake;
+    animation-delay: 1000ms;
+}
+
+
+#logosshake {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 200px;
+    
+
+    #logo1shake {
+        margin-top: 5px;
+    }
+
+    #logo3shake {
+        display: flex;
+        margin-top: 10px;
+        gap:10px;
+
+        #box {
+            margin-top: -5px;
+        }
+    }
+
+    #logo4shake {
+        display: flex;
+        gap:0px;
+
+        #cat {
+            margin-top: 2px;
+        }
+    }
+}
+
+#logosdarkthemeshake {
+    display: none;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 200px;
+
+
+    #logo1darkshake {
+        margin-top: 5px;
+    }
+
+    #logo3darkshake {
+        display: flex;
+        margin-top: 10px;
+        gap:10px;
+
+        #boxdark {
+            margin-top: -5px;
+        }
+    }
+
+    #logo4darkshake {
+        display: flex;
+        gap:0px;
+
+        #catdark {
+            margin-top: 2px;
+        }
+    }
+}
+
+
+//Metaldörr som stänger sidan
+
+#closinggate {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation-name: closinggate;
+    animation-duration: 5s;
+    animation-fill-mode: backwards;
+    animation-play-state: paused;
+    animation-delay: 10s;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+}
+
+
+
+@media only screen and (max-width: 840px) {
+
+    .startimage4 {
+        max-width: 15%;
+        position: absolute;
+        top: -18%;
+        left: 5%;
+
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    
+    .startimage4 {
+        max-width: 15%;
+        position: absolute;
+        top: -14%;
+        left: 5%;
+
+    }
+}
+
+
+
+@media only screen and (max-width: 540px) {
+
+    .startimage4 {
+        max-width: 15%;
+        position: absolute;
+        top: -14%;
+        left: 5%;
+
+    }
+}
+
+
+@media only screen and (max-width: 470px) {
+
+    .startimage4 {
+        max-width: 15%;
+        position: absolute;
+        top: -8%;
+        left: 5%;
+    }
+
+}
+
+
+
+// @media only screen and (max-width: 420px) {
+    
+//     .startimage4 {
+//         max-width: 15%;
+//         position: absolute;
+//         top: -5%;
+//         left: 5%;
+
+//     }
+// }
+
+
+//Sengångare som glider längs linjen och faller
+
+@media only screen and (max-width: 420px) {
+
+    .image4 {
+        max-width: 20%;
+
+    }
+
+    .startimage4 {
+        max-width: 15%;
+        position: static;
+        transform: translateY(-310%);
+        left: 10%;
+        animation-name: slothwalk;
+        animation-duration: 19.5s;
+        animation-fill-mode: none;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+        animation-delay: 1s;
+    }
+
+    .image5 {
+        max-width: 20%;
+    }
+    
+    .startimage5 {
+        max-width: 20%;
+        position: relative;
+        transform: translateY(-50%);
+        left: 5%;
+        animation-name: slothwalk2;
+        animation-duration: 19.5s;
+        animation-fill-mode: none;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-out;
+        animation-delay: 1s;
+        opacity: 0%;
+    }
+}

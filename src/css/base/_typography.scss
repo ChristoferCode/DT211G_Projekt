@@ -1,0 +1,326 @@
+@use "../abstracts/variables" as *;
+
+//Testar variabler inom samma scss-fil och ifrån extern fil
+$font-stack1: Helvetica, Arial, sans-serif;
+$font-stack2: 'Courier New', Courier, monospace;
+
+
+#headertext {
+    font-family: $font-stack2;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.bigheadline {
+    font-family: $font-stack1;
+    text-decoration: overline;
+    font-size: 13.5vw;
+    line-height: 5vw;
+    color: $bigheadline-color-light;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: -21.0vw;
+    -webkit-text-stroke: 2px $bigheadline-stroke-light;
+    text-shadow: $bigheadline-shadow-light 1px 1px 20px;
+    text-transform: uppercase;
+}
+
+.bigheadline2 {
+    font-family: $font-stack1;
+    font-size: 5.6vw;
+    line-height: 7.5vw;
+    color: $bigheadline-color-light;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: -10vw;
+    -webkit-text-stroke: 2px $bigheadline-stroke-light;
+    text-shadow: $bigheadline-shadow-light 1px 1px 20px;
+}
+
+.bigheadlineanimate {
+    font-family: $font-stack1;
+    text-decoration: overline;
+    font-size: 13.5vw;
+    line-height: 5vw;
+    color: $bigheadline-color-light;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: -21.0vw;
+    -webkit-text-stroke: 2px $bigheadline-stroke-light;
+    text-shadow: $bigheadline-shadow-light 1px 1px 20px;
+    text-transform: uppercase;
+}
+
+.bigheadline2animate {
+    font-family: $font-stack1;
+    font-size: 5.6vw;
+    line-height: 7.5vw;
+    color: $bigheadline-color-light;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    margin-top: -10vw;
+    -webkit-text-stroke: 2px $bigheadline-stroke-light;
+    text-shadow: $bigheadline-shadow-light 1px 1px 20px;
+}
+
+h2 {
+    font-family: $font-stack1;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    text-align: left;
+    color:  $h2-color-light;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+//Testar @extend (Selector inheritance) utan placeholder
+#lookalikeh2 {
+    @extend h2;
+}
+
+.who {
+    font-family: $font-stack1;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    text-align: left;
+    color:  $h2-color-light;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+#who {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 3.6rem;
+    text-align: left;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.countdown {
+    font-family: $font-stack1;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    text-align: left;
+    color:  $h2-color-light;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.brodtext {
+    font-family: $font-stack1;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: left;
+    color: $brodtext-color-light;
+    margin-bottom: 50px;
+    max-width: 500px;
+}
+
+.brodtext2 {
+    font-family: $font-stack1;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: left;
+    color: $brodtext-color-light;
+    margin-bottom: 5px;
+    max-width: 500px;
+    margin-left: 20px;
+}
+
+#footertext {
+    font-family: $font-stack2;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+    color: $footertext-color;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+
+    #name {
+        color: $name-color;
+    }
+}
+
+
+
+
+
+//Media queries för rubriken
+
+@media only screen and (max-width: 840px) {
+    .bigheadline {
+        font-size: 13.0vw;
+        line-height: 7vw;
+        margin-top: -24vw;    
+    }
+
+    .bigheadline2 {
+        font-size: 5.4vw;
+        line-height: 7.2vw;
+        margin-top: -11vw;
+    }
+
+    .bigheadlineanimate {
+        font-size: 13.0vw;
+        line-height: 7vw;
+        margin-top: -24vw;    
+    }
+
+    .bigheadline2animate {
+        font-size: 5.4vw;
+        line-height: 7.2vw;
+        margin-top: -11vw;
+    }
+}
+
+
+@media only screen and (max-width: 640px) {
+    .bigheadline {
+        font-size: 13.0vw;
+        line-height: 7vw;
+        margin-top: -26vw;    
+    }
+
+    .bigheadline2 {
+        font-size: 5.4vw;
+        line-height: 7vw;
+        margin-top: -12vw;
+    }
+
+    .bigheadlineanimate {
+        font-size: 13.0vw;
+        line-height: 7vw;
+        margin-top: -26vw;    
+    }
+
+    .bigheadline2animate {
+        font-size: 5.4vw;
+        line-height: 7vw;
+        margin-top: -12vw;
+    }
+}
+
+
+@media only screen and (max-width: 540px) {
+    .bigheadline {
+        font-size: 12.5vw;
+        line-height: 7vw;
+        margin-top: -27vw;    
+    }
+
+    .bigheadline2 {
+        font-size: 5.2vw;
+        line-height: 7vw;
+        margin-top: -13vw;
+    }
+
+    .bigheadlineanimate {
+        font-size: 12.5vw;
+        line-height: 7vw;
+        margin-top: -27vw;    
+    }
+
+    .bigheadline2animate {
+        font-size: 5.2vw;
+        line-height: 7vw;
+        margin-top: -13vw;
+    }
+}
+
+
+@media only screen and (max-width: 470px) {
+    .bigheadline {
+        font-size: 13.4vw;
+        line-height: 7vw;
+        margin-top: -29vw;    
+    }
+
+    .bigheadline2 {
+        font-size: 5.6vw;
+        line-height: 6vw;
+        margin-top: -13vw;
+    }
+
+    .bigheadlineanimate {
+        font-size: 12.4vw;
+        line-height: 7vw;
+        margin-top: -29vw;    
+    }
+
+    .bigheadline2animate {
+        font-size: 5.2vw;
+        line-height: 6vw;
+        margin-top: -13vw;
+    }
+}
+
+
+@media only screen and (max-width: 420px) {
+    .bigheadline {
+        font-size: 13.5vw;
+        line-height: 7vw;
+        margin-top: -31vw;    
+    }
+
+    .bigheadline2 {
+        font-size: 5.6vw;
+        line-height: 5vw;
+        margin-top: -14vw;
+    }
+
+    .bigheadlineanimate {
+        font-size: 13.5vw;
+        line-height: 7vw;
+        margin-top: -31vw;    
+    }
+
+    .bigheadline2animate {
+        font-size: 5.6vw;
+        line-height: 5vw;
+        margin-top: -14vw;
+    }
+}
+
+
+@media only screen and (min-width: 1235px) {
+    .bigheadline {
+        font-size: 16.8rem;
+        line-height: 7rem;
+        margin-top: -262px;
+    }
+
+    .bigheadline2 {
+        font-size: 7.0rem;
+        line-height: 9.2rem;
+        margin-top: -125px;
+    }
+
+    .bigheadlineanimate {
+        font-size: 16.8rem;
+        line-height: 7rem;
+        margin-top: -262px;
+    }
+
+    .bigheadline2animate {
+        font-size: 7.0rem;
+        line-height: 9.2rem;
+        margin-top: -125px;
+    }
+}
+

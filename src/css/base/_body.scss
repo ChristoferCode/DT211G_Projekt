@@ -1,0 +1,72 @@
+@use "../abstracts/variables" as *;
+
+//Testar använding av placeholder och @extend (selector inheritance) inom samma scss-fil (eftersom Parcel kraschar när de barta ligger i min _variables.scss)
+
+%default {
+    margin: 0;
+    padding: 0;
+}
+
+//Testar variabler inom samma scss-fil (eftersom Parcel kraschar när de barta ligger i min _variables.scss)
+@mixin centerObject($margin) {
+    margin-left: $margin;
+    margin-right: $margin;
+}
+
+
+
+html {
+    font-size: 62.5%;
+    @extend %default;
+}
+
+body {
+    background-color: $bodybg-color-light;
+    @extend %default;
+    background-image: url("../images/bokeh.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+#startcontainer {
+    box-shadow: rgb(0, 0, 0, 0.5) 4px 4px 8px;
+    width: 80vw;
+    @include centerObject(auto);
+    max-width: 1000px;
+    border-radius: 50px 50px 40px 40px;   
+    background-image: linear-gradient(rgb(57, 7, 63), rgb(119, 14, 131) , rgb(202, 28, 222), rgb(119, 14, 131), rgb(57, 7, 63));
+}
+
+.textblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 500px;
+    @include centerObject(auto);
+    overflow: hidden;
+}
+
+#main {
+    background-color: $mainbg-color-light;
+    width: 95%;
+    @include centerObject(auto);
+    border-radius: 30px 30px 30px 30px; 
+}
+
+#main2 {
+    background-color: $mainbg-color-light;
+    width: 95%;
+    @include centerObject(auto);
+    border-radius: 30px 30px 30px 30px; 
+}
+
+
+@media only screen and (max-width: 470px) {
+    #startcontainer {
+        width: 90vw;
+    }
+}

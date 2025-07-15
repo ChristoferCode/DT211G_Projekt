@@ -1,0 +1,539 @@
+@use "../abstracts/mixins" as *;
+
+
+#menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style-type: none;   
+}
+
+.link {
+    text-decoration: none;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    text-wrap: nowrap;
+}
+
+//Testar @extend (Selector inheritance) utan placeholder
+.activelink {
+    @extend .link;
+    color:rgb(57, 7, 63);
+}
+
+.linkbutton {
+    background-image: url("../images/bokeh.jpg");
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.activelinkbutton {
+    @extend .linkbutton;
+    border: 2px solid rgb(255, 102, 245);
+    background-size: cover;
+}
+
+.linkbutton:hover, .linkbutton:focus {
+    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+    transform: translateY(-3px);
+    cursor: pointer;
+    text-shadow: rgb(255, 255, 255) 0px 2px 8px; 
+    background-image: url("../images/bokeh.jpg");
+    background-size: cover;
+}
+
+#open-menu {
+    background-image: linear-gradient(to right, rgb(119, 14, 131) , rgb(202, 28, 222), rgb(119, 14, 131));
+    padding: 5px 10px 10px 10px;
+    margin: 0;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+    justify-content: space-between;
+    width: 160px;
+    height: 45px;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#close-menu {
+    background-image: linear-gradient(to right, rgb(119, 14, 131) , rgb(202, 28, 222), rgb(119, 14, 131));
+    padding: 5px 10px 10px 10px;
+    margin: 0;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+    justify-content: space-between;
+    width: 160px;
+    height: 45px;
+}
+
+.menutextopen {
+    color: rgb(255, 255, 255);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+}
+
+.menutextclose {
+    color: rgb(255, 255, 255);
+    font-family:'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+}
+
+.bar1 {
+    background-color: rgb(164, 255, 225);
+    width: 25px;
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.bar2 {
+    background-color: rgb(164, 255, 225);
+    width: 25px;
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.bar3 {
+    background-color: rgb(164, 255, 225);
+    width: 25px;
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.bar1close {
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(250%) rotate(45deg);
+    width: 35px;
+    background-color: red;
+    display: block;
+}
+
+.bar2close {
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateX(-200%) scaleY(10);
+    opacity: 0%;
+    background-color: red;
+    display: block;
+}
+
+.bar3close {
+    height: 3px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(-250%) rotate(-45deg);
+    width: 35px;
+    background-color: red;
+    display: block;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    #open-menu {
+        padding: 5px 10px 10px 10px;
+        margin: 0;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        width: 160px;
+        height: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -10px;
+        margin-bottom: 10px;
+
+        animation-name: hamburgerborder;
+        @include animate(1s, both, paused, normal);
+    }
+
+    #menu {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style-type: none;
+        margin-left: -20px;
+        margin-right: 20px;
+        padding-top: 10px;
+
+        animation: showmenu;
+        animation-play-state: paused;
+        animation-duration: 1s;
+        transition: all ease-in-out;
+    }
+
+    #close-menu {
+        padding: 5px 10px 10px 10px;
+        margin: 0;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        cursor: pointer;
+        display: none;
+        justify-content: space-between;
+        width: 160px;
+        height: 45px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -10px;
+        margin-bottom: 10px;
+
+        animation-name: hamburgerborderclose;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .menutextopen {
+        color: rgb(255, 255, 255);
+        font-family:'Courier New', Courier, monospace;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        display: block;
+
+        animation-name: hamburgertext;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .menutextclose {
+        color: rgb(255, 255, 255);
+        font-family:'Courier New', Courier, monospace;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        text-align: center;
+        margin-top: auto;
+        margin-bottom: auto;
+        display: flex;
+        
+        animation-name: hamburgertextclose;
+        @include animate(1s, both, paused, normal);
+    }
+
+    // .linkbutton {
+    //     background-image: linear-gradient(to right, rgb(119, 14, 131) , rgb(202, 28, 222), rgb(119, 14, 131));
+    //     padding: 5px 20px;
+    //     border-radius: 10px;
+    //     border: 2px solid rgb(255, 255, 255);
+    // }
+
+    // .activelinkbutton {
+    //     @extend .linkbutton;
+    //     border: 2px solid rgb(255, 102, 245);
+    //     background-image: url("../images/bokeh.jpg");
+    //     background-size: cover;
+    // }
+
+    @keyframes showmenu {
+        from {
+            transform: translateY(400px);
+        }
+    
+        to {
+            transform: translateY(0px);
+        }
+     }
+
+     @keyframes hidemenu {
+        0% {
+            transform: translateY(0px);
+        }
+    
+        100% {
+            transform: translateY(400px);
+        }
+     }
+
+    @keyframes hamburgerborder {
+        from {
+            border: 2px solid rgb(255, 255, 255);
+        }
+
+        to {
+            border: 2px solid rgb(255, 255, 255);
+        }
+    }
+
+    @keyframes hamburgerborderhover {
+        from {
+            box-shadow: rgb(255, 255, 255) 0px 2px 8px;  
+        }
+
+        to {
+            box-shadow: rgb(255, 255, 255) 0px 2px 8px;  
+        }
+    }
+
+
+    @keyframes hamburgerborderclose {
+        from {
+            border: 2px solid rgb(255, 255, 255);
+        }
+
+        to {
+            border: 2px solid rgb(255, 255, 255);
+        }
+    }
+
+
+    @keyframes hamburgerborderclosehover {
+        from {
+            box-shadow: rgb(255, 255, 255) 0px 2px 8px;  
+        }
+
+        to {
+            box-shadow: rgb(255, 255, 255) 0px 2px 8px;  
+        }
+    }
+
+
+    @keyframes hamburgertext {
+        from {
+            color: rgb(255, 255, 255);
+        }
+
+        to {
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    @keyframes hamburgertextclose {
+        from {
+            color: rgb(255, 255, 255);
+        }
+
+        to {
+            color: rgb(255, 255, 255);
+        }
+    }
+
+ 
+
+    .bar1 {
+        animation-name: hamburgerbar1;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .bar2 {
+        animation-name: hamburgerbar2;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .bar3 {
+        animation-name: hamburgerbar3;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .bar1close {
+        animation-name: hamburgerbar1close;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .bar2close {
+        animation-name: hamburgerbar2close;
+        @include animate(1s, both, paused, normal);
+    }
+
+    .bar3close {
+        animation-name: hamburgerbar3close;
+        @include animate(1s, both, paused, normal);
+    }
+
+    @keyframes hamburgerbar1 {
+        from {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            transform: translateY(250%) rotate(45deg);
+            width: 35px;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+
+    @keyframes hamburgerbar2 {
+        from {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            transform: translateX(-200%) scaleY(10);
+            opacity: 0%;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+
+    @keyframes hamburgerbar3 {
+        from {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            transform: translateY(-250%) rotate(-45deg);
+            width: 35px;
+            background-color: rgb(255, 255, 255);
+        }
+    }
+
+    @keyframes hamburgerbar1close {
+        from {
+            transform: translateY(250%) rotate(45deg);
+            width: 35px;
+            background-color: rgb(255, 255, 255);
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: translateY(0%) rotate(0deg);
+        }
+    }
+
+    @keyframes hamburgerbar2close {
+        from {
+            transform: translateX(-200%) scaleY(10);
+            opacity: 0%;
+            background-color: rgb(255, 255, 255);
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: translateX(0%) scaleY(1);
+            opacity: 100%;
+        }
+    }
+
+    @keyframes hamburgerbar3close {
+        from {
+            transform: translateY(-250%) rotate(-45deg);
+            width: 35px;
+            background-color: rgb(255, 255, 255);
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        to {
+            background-color: rgb(255, 255, 255);
+            width: 25px;
+            height: 3px;
+            padding: 0px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            transform: translateY(0%) rotate(0deg);
+        }
+    }
+}
