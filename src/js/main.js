@@ -89,7 +89,7 @@ function updateTable() {
 
     dataToTable(currentItems);
 
-    renderPagination (ledamoter.length);
+    renderPagination (arrayToShow.length);
 }
 
 
@@ -158,6 +158,8 @@ function filterLedamoter() {
     );
     console.log(filteredLedamoter);
 
+    //Återställer "sidan" till 1 vid en sökning
+    currentPage = 1;
     //Kör funktionen dataToTable igen men med den filtrerade arrayen
     updateTable(filteredLedamoter);
 }
