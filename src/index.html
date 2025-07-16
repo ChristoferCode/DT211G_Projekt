@@ -96,7 +96,7 @@
                 <option value="C">Centerpartiet</option>
                 <option value="KD">Kristdemokraterna</option>
                 <option value="L">Liberalerna</option>
-                <option value="MP">Miljöpartiet</option>
+                <option value="MP">Miljöpartiet de gröna</option>
                 <option value="M">Moderaterna</option>
                 <option value="SD">Sverigedemokraterna</option>
                 <option value="S">Socialdemokraterna</option>
@@ -104,11 +104,49 @@
                 <option value="-">Utan partibeteckning</option>
             </select>
 
+            <label for="valkretsfilter" class="valkretsfilter">Parti:</label>
+            <select id="valkretsfilter" >
+                <option value="X">Välj valkrets...</option>
+                <option value="">Alla valkretsar</option>
+                <option value="Blekinge+län">Blekinge län</option>
+                <option value="Dalarnas+län">Dalarnas län</option>
+                <option value="Gotlands+län">Gotlands län</option>
+                <option value="Gävleborgs+län">Gävleborgs län</option>
+                <option value="Göteborgs+kommun">Göteborgs kommun</option>
+                <option value="Hallands+län">Hallands län</option>
+                <option value="Jämtlands+län">Jämtlands län</option>
+                <option value="Jönköpings+län">Jönköpings län</option>
+                <option value="Kalmar+län">Kalmar län</option>
+                <option value="Kronobergs+län">Kronobergs län</option>
+                <option value="Malmö+kommun">Malmö kommun</option>
+                <option value="Norrbottens+län">Norrbottens län</option>
+                <option value="Skåne+läns+norra+och+östra">Skåne läns norra och östra</option>
+                <option value="Skåne+läns+södra">Skåne läns södra</option>
+                <option value="Skåne+läns+västra">Skåne läns västra</option>
+                <option value="Stockholms+kommun">Stockholms kommun</option>
+                <option value="Stockholms+län">Stockholms län</option>
+                <option value="Södermanlands+län">Södermanlands län</option>
+                <option value="Uppsala+län">Uppsala län</option>
+                <option value="Värmlands+län">Värmlands län</option>
+                <option value="Västerbottens+län">Västerbottens län</option>
+                <option value="Västernorrlands+län">Västernorrlands län</option>
+                <option value="Västmanlands+län">Västmanlands län</option>
+                <option value="Västra+Götalands+läns+norra">Västra Götalands läns norra</option>
+                <option value="Västra+Götalands+läns+södra">Västra Götalands läns södra</option>
+                <option value="Västra+Götalands+läns+västra">Västra Götalands läns västra</option>
+                <option value="Västra+Götalands+läns+östra">Västra Götalands läns östra</option>
+                <option value="Örebro+län">Örebro län</option>
+                <option value="Östergötlands+län">Östergötlands län</option>
+                
+            </select>
+
             <label for="visaAntal" class="visaAntal">Antal per sida</label>
             <input type="range" id="visaAntal" value="10" name="visaAntal" min="5" max="100" step="5" oninput="this.nextElementSibling.value = this.value">
             <output>10</output>
 
-
+        <div id="antalTraffar">
+            <span id="antalLedamoter"></span>
+        </div>
 
         <div id="pagination">
             <button id="prevPage">Föregående</button>
@@ -127,6 +165,7 @@
                         <th id="sort6"><i class="fa-solid fa-sort"></i> Utbildning</th>
                         <th id="sort7"><i class="fa-solid fa-sort"></i> Anställningar</th>
                         <th id="sort8"><i class="fa-solid fa-sort"></i> E-post</th>
+                        <th id="sort9"><i class="fa-solid fa-sort"></i> Partilogo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,6 +173,12 @@
                         <td>test1</td>
                         <td>test2</td>
                         <td>test3</td>
+                        <td>test4</td>
+                        <td>test5</td>
+                        <td>test6</td>
+                        <td>test7</td>
+                        <td>test8</td>
+                        <td>test9</td>
                     </tr>
                 </tbody>
                 <tfoot>

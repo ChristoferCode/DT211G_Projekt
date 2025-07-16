@@ -6,13 +6,43 @@ let sort1El = document.querySelector("#sort1");
 let sort2El = document.querySelector("#sort2");
 let sort3El = document.querySelector("#sort3");
 let sort4El = document.querySelector("#sort4");
-let valtParti = "SD";
+let valtParti = "";
+let valdValkrets = "";
+
+let antalLedamoterEL = document.querySelector("#antalLedamoter");
 
 let currentPage = 1;
 let itemsPerPage = document.querySelector("#visaAntal").value;
 
 console.log(itemsPerPage);
 
+let partiLogoCache = {};
+
+console.log("Logocashe: " + partiLogoCache);
+
+let partiFullName = {
+    "S": "Socialdemokraterna",
+    "M": "Moderaterna",
+    "SD": "Sverigedemokraterna",
+    "C": "Centerpartiet",
+    "V": "Vänsterpartiet",
+    "KD": "Kristdemokraterna",
+    "L": "Liberalerna",
+    "MP": "Miljöpartiet de gröna"
+};
+
+let partiWikiTitles = {
+    "S": "Socialdemokraterna (Sverige)",
+    "M": "Moderaterna",
+    "SD": "Sverigedemokraterna",
+    "C": "Centerpartiet",
+    "V": "Vänsterpartiet",
+    "KD": "Kristdemokraterna (Sverige)",
+    "L": "Liberalerna",
+    "MP": "Miljöpartiet"
+};
+
+console.log("partiWikiTitles: " + partiWikiTitles);
 
 //Deklarerar variabler i mitt globala scope. Två tomma för array med alla kurser och för filtrerad array.
 let ledamoter = [];
@@ -30,11 +60,16 @@ let checked4 = "no";
 window.onload = () => {
     getLedamoter();
     document.querySelector("#search").addEventListener("input", filterLedamoter);
+
     document.querySelector("#sort1").addEventListener("click", sortLedamoter1);
     document.querySelector("#sort2").addEventListener("click", sortLedamoter2);
     document.querySelector("#sort3").addEventListener("click", sortLedamoter3);
     document.querySelector("#sort4").addEventListener("click", sortLedamoter4);
+
     document.querySelector("#partifilter").addEventListener("change", filterByParty);
+
+    document.querySelector("#valkretsfilter").addEventListener("change", filterByValkrets);
+
     document.querySelector("#visaAntal").addEventListener("input", (event) => {
         itemsPerPage = parseInt(event.target.value);
         currentPage = 1;
@@ -57,12 +92,12 @@ document.querySelector("#nextPage").addEventListener("click", () => {
 });
 
 //Funktion som fetchar API från en url med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
-async function getLedamoter(valtParti) {
+async function getLedamoter(valtParti, valdValkrets) {
     console.log(ledamoter);
 
     try {
         const response = await fetch(
-            `https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=${valtParti}&valkrets=&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`
+            `https://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=${valtParti}&valkrets=${valdValkrets}&rdlstatus=&org=&utformat=json&sort=sorteringsnamn&sortorder=asc&termlista=`
         );
 
         //Obs! Ändrara värde på courses, inte deklarerar (det är redan gjort)
@@ -79,27 +114,67 @@ async function getLedamoter(valtParti) {
 }
 
 
+async function getPartiInfo(partikod) {
+    console.log("partikod: " + partikod);
 
-function updateTable() {
+       // Om vi redan har loggan sparad – använd den
+    if (partiLogoCache[partikod]) {
+        return partiLogoCache[partikod];
+    }
+
+    let title = partiWikiTitles[partikod];
+    if (!title) return null;
+
+    try {
+        const response = await fetch(
+            `https://sv.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts|pageimages&exintro=true&pithumbsize=300&titles=${encodeURIComponent(title)}`
+        );
+
+        //Obs! Ändrara värde på courses, inte deklarerar (det är redan gjort)
+        const data = await response.json();
+
+        const pages = data.query.pages;
+        const page = Object.values(pages)[0];
+
+        const logoUrl = page?.thumbnail?.source || null;
+
+        // Cacha resultatet
+        partiLogoCache[partikod] = logoUrl;
+        return logoUrl;
+
+
+    } catch (error) {
+        console.error("Det har uppstått ett fel: ", error);
+        return null;
+    }
+}
+
+
+
+async function updateTable() {
     let arrayToShow = filteredLedamoter.length > 0 ? filteredLedamoter : ledamoter;
     
     let startIndex = (currentPage - 1) * itemsPerPage;
     let endIndex = startIndex + itemsPerPage;
     let currentItems = arrayToShow.slice(startIndex, endIndex);
 
-    dataToTable(currentItems);
+    await dataToTable(currentItems);
 
     renderPagination (arrayToShow.length);
 }
 
 
 //Funktion som skriver ut objekten i mina arrayer till DOM (alla eller filtrerad samt olika sorteringar beroende på vilken data som skickas in), rad för rad till en tabell med korrekta taggar. Först rensas hela tabellen dock.
-function dataToTable(currentItems) {
+async function dataToTable(currentItems) {
 
 tbodyEl.innerHTML = "";
 
-    currentItems.forEach(ledamot => {
 
+
+   // currentItems.forEach(ledamot => {
+
+    for (let ledamot of currentItems) {
+        
         let utbildningObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Utbildning");
         let anstallningarObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Anställningar");
         let epostObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Officiell e-postadress");
@@ -116,23 +191,35 @@ tbodyEl.innerHTML = "";
             ? `<a href="mailto:${epostObjekt.uppgift[0].replace("[på]", "@")}">${epostObjekt.uppgift[0].replace("[på]", "@")}</a>`
             : "Ingen info";
 
+        let logoUrl = await getPartiInfo(ledamot.parti);
+
+        let logoHTML = logoUrl
+            ? `<img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:50px;">`
+            : "Ingen logo";
+
         tbodyEl.innerHTML += `<tr>
         <td id="td1">${ledamot.sorteringsnamn}</td>
         <td id="td2">${ledamot.fodd_ar}</td>
-        <td id="td3">${ledamot.parti}</td>
+        <td id="td3">${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})</td>
         <td id="td4">${ledamot.valkrets}</td>
         <td id="td5"><a href="${ledamot.bild_url_192}" target="_blank"> <i class="fa-solid fa-up-right-from-square"></i></a></td>
         <td id="td6">${utbildning}</td>
         <td id="td6">${anstallningar}</td>
         <td id="td6">${epost}</td>
+        <td id="td6">${logoHTML}</td>
         </tr>`;
-    });
+
+        console.log("Logotyp-URL: " + logoHTML);
+    }
 
     
     console.log("Här fortsätter mitt program...");
 }
 
 function renderPagination(totalItems) {
+
+    antalLedamoterEL.innerHTML = `Antal ledamöter som matchar sökningen: ${totalItems} (av totalt 349 ledamöter).`;
+
     let totalPages = Math.ceil(totalItems / itemsPerPage);
     document.querySelector("#pageInfo").textContent = `Sida ${currentPage} av ${totalPages}`;
 
@@ -263,7 +350,14 @@ function sortLedamoter4() {
 
 function filterByParty() {
 
-    let valtParti = document.querySelector("#partifilter").value;
-    getLedamoter(valtParti);
+    valtParti = document.querySelector("#partifilter").value;
+    getLedamoter(valtParti, valdValkrets);
+
+}
+
+function filterByValkrets() {
+
+    valdValkrets = document.querySelector("#valkretsfilter").value;
+    getLedamoter(valtParti, valdValkrets);
 
 }
