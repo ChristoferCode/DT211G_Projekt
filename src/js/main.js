@@ -300,7 +300,7 @@ tbodyEl.innerHTML = "";
     link.addEventListener("click", (e) => {
         e.preventDefault();
         let id = link.getAttribute("data-id");
-        visaInfoOmLedamot(id);
+        visaEnsklidLedamotInfo(id);
     });
 });
 
