@@ -85,13 +85,13 @@
             <div class="brod">
             <h2 class="ramschema">Ledamöter i Riksdagen</h2>
 
+            <div id="formsfilter">
             
-            <label for="search" class="search">Sök:</label>
-            <input type="text" id="search" name="search" placeholder="Sök för- eller efternamn">
+            
 
-            <label for="partifilter" class="partifilter">Parti:</label>
+            <label for="partifilter" class="partifilter">Välj parti:</label>
             <select id="partifilter" >
-                <option value="X">Välj parti...</option>
+                <option value="">Välj parti...</option>
                 <option value="">Alla partier</option>
                 <option value="C">Centerpartiet</option>
                 <option value="KD">Kristdemokraterna</option>
@@ -104,9 +104,9 @@
                 <option value="-">Utan partibeteckning</option>
             </select>
 
-            <label for="valkretsfilter" class="valkretsfilter">Parti:</label>
+            <label for="valkretsfilter" class="valkretsfilter">Välj valkrets:</label>
             <select id="valkretsfilter" >
-                <option value="X">Välj valkrets...</option>
+                <option value="">Välj valkrets...</option>
                 <option value="">Alla valkretsar</option>
                 <option value="Blekinge+län">Blekinge län</option>
                 <option value="Dalarnas+län">Dalarnas län</option>
@@ -137,16 +137,21 @@
                 <option value="Västra+Götalands+läns+östra">Västra Götalands läns östra</option>
                 <option value="Örebro+län">Örebro län</option>
                 <option value="Östergötlands+län">Östergötlands län</option>
-                
             </select>
 
-            <label for="visaAntal" class="visaAntal">Antal per sida</label>
-            <input type="range" id="visaAntal" value="10" name="visaAntal" min="5" max="100" step="5" oninput="this.nextElementSibling.value = this.value">
-            <output>10</output>
+            <label for="search" class="search">Filtrera på namn:</label>
+            <input type="text" id="search" name="search" placeholder="Sök för- eller efternamn">
 
-        <div id="antalTraffar">
-            <span id="antalLedamoter"></span>
-        </div>
+            <div id="antalTraffar">
+                <span id="antalSomMatchar">Antal ledamöter som matchar sökningen:</p>
+                <span id="antalLedamoter"></span>
+            </div>
+
+            <label for="visaAntal" class="visaAntal">Visa antal per sida</label>
+            <input type="range" id="visaAntal" value="10" name="visaAntal" min="5" max="100" step="5" oninput="this.nextElementSibling.value = this.value">
+            <output id="antaloutput">10</output>
+
+        
 
         <div id="pagination">
             <button id="prevPage">Föregående</button>
@@ -154,18 +159,16 @@
             <button id="nextPage">Nästa</button>
         </div>
 
+        </div>
+
             <table>
                 <thead>
                     <tr>
-                        <th id="sort1"><i class="fa-solid fa-sort"></i> Sorteringsnamn</th>
+                        <th id="sort9">Partilogo</th>
+                        <th id="sort1"><i class="fa-solid fa-sort"></i> Namn</th>
                         <th id="sort2"><i class="fa-solid fa-sort"></i> Födelseår</th>
                         <th id="sort3"><i class="fa-solid fa-sort"></i> Parti</th>
                         <th id="sort4"><i class="fa-solid fa-sort"></i> Valkrets</th>
-                        <th id="sort5">Bild</th>
-                        <th id="sort6"><i class="fa-solid fa-sort"></i> Utbildning</th>
-                        <th id="sort7"><i class="fa-solid fa-sort"></i> Anställningar</th>
-                        <th id="sort8"><i class="fa-solid fa-sort"></i> E-post</th>
-                        <th id="sort9"><i class="fa-solid fa-sort"></i> Partilogo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -175,14 +178,11 @@
                         <td>test3</td>
                         <td>test4</td>
                         <td>test5</td>
-                        <td>test6</td>
-                        <td>test7</td>
-                        <td>test8</td>
-                        <td>test9</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -192,8 +192,26 @@
             </table>
         </div>
 
+        <div class="visaInfo">
+            <span id="visaInfo">Visa info om alla ledamöter som matchar sökningen: </span>
+            <button id="jaVisaInfo">Ja, visa info</button>
+        </div>
+
+
+        <div class="ledamotDetalj">
+            
+        </div>
+        
+
+        <div class="ledamotInfo" id="ledamotBildText">
+            
+        </div>
+
 
        
+         <div class="partiInfo">
+            <span id="partiInfo"></span>
+        </div>
             
             <div class="brod">
                 <h2>Denna uppgift går ut på att:</h2>

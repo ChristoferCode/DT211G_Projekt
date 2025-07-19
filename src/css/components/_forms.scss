@@ -1,0 +1,101 @@
+#formsfilter {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.partifilter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+#partifilter {
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}
+
+.valkretsfilter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+#valkretsfilter {
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}
+
+.visaAntal {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+#visaAntal {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}
+
+#antaloutput {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    margin-bottom: 50px;
+    color: rgb(22, 91, 251);
+}
+
+#antalTraffar {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    margin-bottom: 50px;
+}
+
+#antalSomMatchar {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    margin-bottom: 200px;
+}
+
+#antalLedamoter {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+    color: rgb(22, 91, 251);
+}
+
+
+
+
+#pagination {
+    
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}
+
+.search {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    line-height: 3.6rem;
+}
+
+#search {
+    margin-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 5px;
+}

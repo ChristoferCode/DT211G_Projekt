@@ -3,19 +3,6 @@
     font-size: 3.4rem;
 }
 
-.search {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.4rem;
-    line-height: 3.6rem;
-}
-
-#search {
-    margin-bottom: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.6rem;
-    line-height: 2.4rem;
-    padding: 5px;
-}
 
 #sort1 {
     width: 25%;
@@ -34,7 +21,7 @@
 }
 
 #sort1:hover {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
     cursor: pointer;
     color: rgb(0, 91, 61);
@@ -42,7 +29,7 @@
 }
 
 #sort2:hover {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
     cursor: pointer;
     color: rgb(0, 91, 61);
@@ -50,7 +37,7 @@
 }
 
 #sort3:hover {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
     cursor: pointer;
     color: rgb(0, 91, 61);
@@ -58,7 +45,7 @@
 }
 
 #sort4:hover {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
     cursor: pointer;
     color: rgb(0, 91, 61);
@@ -66,7 +53,7 @@
 }
 
 table {
-    border: 15px solid rgb(64, 255, 191);
+    border: 15px solid rgb(242, 255, 64);
     margin: 0 auto;
     margin-bottom: 100px;
     max-width: 700px;
@@ -81,7 +68,7 @@ thead {
     line-height: 3.0rem;
     text-align: left;
     padding: 10px;
-    background-color: rgb(64, 255, 191);
+    background-color: rgb(242, 255, 64);
 }
 
 th {
@@ -94,7 +81,7 @@ tbody {
     font-size: 1.6rem;
     line-height: 2.4rem;
     background-color: black;
-    color: rgb(64, 255, 191);
+    color: rgb(242, 255, 64);
 }
 
 td {
@@ -112,7 +99,7 @@ td {
 td a {
     text-decoration: none;
     display: block;
-    color: rgb(64, 255, 191);
+    color: rgb(242, 255, 64);
 }
 
 td a:hover {
@@ -132,23 +119,23 @@ td a:visited {
 }
 
 tr {
-    box-shadow: rgb(64, 255, 191) 0px 2px 8px;
+    box-shadow: rgb(242, 255, 64) 0px 2px 8px;
 }
 
 tr:nth-child(even) {
     background-color: rgb(56, 56, 56);
-    box-shadow: rgb(64, 255, 191) 0px -2px 8px;
+    box-shadow: rgb(242, 255, 64) 0px -2px 8px;
 }
 
 tbody > tr:hover {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     box-shadow: rgb(255, 255, 255) 0px 2px 8px;
     color: rgb(0, 91, 61);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
 tbody > tr:hover a {
-    background-color: rgb(164, 255, 225);
+    background-color: rgb(242, 255, 64);
     color: rgb(0, 91, 61);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
@@ -159,7 +146,7 @@ tfoot {
     line-height: 3.6rem;
     text-align: left;
     padding: 10px;
-    background-color: rgb(64, 255, 191);
+    background-color: rgb(242, 255, 64);
     border-top: 2px solid black;
 }
 
@@ -172,7 +159,7 @@ tfoot {
         line-height: 2.8rem;
         text-align: left;
         padding: 10px;
-        background-color: rgb(64, 255, 191);
+        background-color: rgb(239, 255, 64);
     }
 
     tbody {
@@ -180,7 +167,7 @@ tfoot {
         font-size: 1.4rem;
         line-height: 2.8rem;
         background-color: black;
-        color: rgb(64, 255, 191);
+        color: rgb(242, 255, 64);
     }
 }
 
@@ -193,7 +180,7 @@ tfoot {
         line-height: 2.0rem;
         text-align: left;
         padding: 10px;
-        background-color: rgb(64, 255, 191);
+        background-color: rgb(242, 255, 64);
     }
 
     tbody {
@@ -201,7 +188,7 @@ tfoot {
         font-size: 1.0rem;
         line-height: 2.0rem;
         background-color: black;
-        color: rgb(64, 255, 191);
+        color: rgb(242, 255, 64);
     }
 }
 
