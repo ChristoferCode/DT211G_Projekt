@@ -30,6 +30,10 @@ let jaVisaInfoEl = document.querySelector("#jaVisaInfo");
 
 //Variabel föf ensklid extra info om klickad ledamot
 let ledamotDetaljEl = document.querySelector(".ledamotDetalj");
+let ledamotDetaljBildEl = document.querySelector("#ledamotDetaljBild");
+let ledamotDetaljTextEl = document.querySelector("#ledamotDetaljText");
+
+
 
 
 //Deklarerar en variabel som cashar de hämtade partiloggorna.
@@ -282,15 +286,17 @@ tbodyEl.innerHTML = "";
         //Skriver ut extra info inklusive bild om alla ledamöter från sökträff.
         ledamotBildTextEl.innerHTML += 
         `<picture>
-            <img src="${ledamot.bild_url_192}" class="ledamotimage" width=150 alt="Riksdagsledamot: ${ledamot.sorteringsnamn}" />
+            <img src="${ledamot.bild_url_192}" class="ledamotimage" width=200 alt="Riksdagsledamot: ${ledamot.sorteringsnamn}" />
         </picture>
         <p class="ledamotText">${logoHTML}</p>
-        <p class="ledamotText">Namn: ${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
-        <p class="ledamotText">Född: ${ledamot.fodd_ar}</p>
-        <p class="ledamotText">Utbildning: ${utbildning}</p>
-        <p class="ledamotText">Tidigare anställningar: ${anstallningar}</p>
-        <p class="ledamotText">E-post: ${epost}</p>`;
+        <p class="ledamotText"><span class="ledamotTextBold">Namn: </span>${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">Född: </span>${ledamot.fodd_ar}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>`;
         
+
+    
 
         console.log("Logotyp-URL: " + logoHTML);
     }
@@ -315,7 +321,7 @@ function renderPagination(totalItems) {
     antalLedamoterEL.innerHTML = `${totalItems} (av totalt 349 ledamöter).`;
 
     let totalPages = Math.ceil(totalItems / itemsPerPage);
-    document.querySelector("#pageInfo").textContent = `Sida ${currentPage} av ${totalPages}`;
+    document.querySelector("#pageInfo").innerHTML = `Sida ${currentPage} av ${totalPages}`;
 
     //Gör knapparna oklickbara om man är på första respektive sista sidan.
     document.querySelector("#prevPage").disabled = currentPage === 1;
@@ -473,6 +479,8 @@ async function visaEnsklidLedamotInfo(id) {
 
     console.log("Här fortsätter min funktion visaInfoOmLedamot...");
 
+    console.log("ledamotDetaljEl = " + ledamotDetaljEl);
+
     const allLedamoter = filteredLedamoter.length > 0 ? filteredLedamoter : ledamoter;
     const ledamot = allLedamoter.find(p => p.intressent_id === id);
     if (!ledamot) return;
@@ -497,31 +505,34 @@ async function visaEnsklidLedamotInfo(id) {
     //Loggan hämtas från Wikipedias API och behöver därför en await här.
     let logoUrl = await getPartiInfo(ledamot.parti);
     let logoHTML = logoUrl
-        ? `<img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:50px;">`
+        ? `<img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:100px;">`
         : "Ingen logo";
 
-    console.log('ledamotDetaljEl:', ledamotDetaljEl);
+    console.log('ledamotDetaljTextEl:', ledamotDetaljTextEl);
 
     console.log("Klick på ledamot med id:", id);
 
     //Skriver ut extra info inklusive bild om vald enskild ledamöter från sökträff. Gör även en knapp för att kunna stänga/dölja infon om man vill.
-    ledamotDetaljEl.innerHTML = 
+    ledamotDetaljBildEl.innerHTML = 
     `<picture>
-        <img src="${ledamot.bild_url_192}" class="ledamotimage" width=150 alt="Riksdagsledamot: ${ledamot.sorteringsnamn}" />
-    </picture>
-    <p class="ledamotText">${logoHTML}</p>
-    <p class="ledamotText">Namn: ${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
-    <p class="ledamotText">Född: ${ledamot.fodd_ar}</p>
-    <p class="ledamotText">Utbildning: ${utbildning}</p>
-    <p class="ledamotText">Tidigare anställningar: ${anstallningar}</p>
-    <p class="ledamotText">E-post: ${epost}</p>
-    <button id="stangDetalj">Stäng</button>`;
+        <img src="${ledamot.bild_url_192}" class="ledamotimage" width=200 alt="Riksdagsledamot: ${ledamot.sorteringsnamn}" />
+    </picture>`;
 
-    ledamotDetaljEl.style.display = "flex";
+    ledamotDetaljTextEl.innerHTML =
+    `<p class="ledamotText">${logoHTML}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Namn: </span>${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Född: </span>${ledamot.fodd_ar}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
+    <button id="stangDetalj">[X] Stäng</button>`;
+
+    
+    ledamotDetaljEl.style.visibility = "visible";
     
     //Händelselyssnare till knappen som skapas ovan som gör att display på infon ändras från flex till none (döljs).
     document.querySelector("#stangDetalj").addEventListener("click", () => {
-        ledamotDetaljEl.style.display = "none";
+        ledamotDetaljEl.style.visibility = "hidden";
     });
 }
 

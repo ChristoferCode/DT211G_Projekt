@@ -1,0 +1,70 @@
+.ledamotDetalj {
+    border: 30px solid rgb(234, 234, 234);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    background-color: white;
+    box-shadow: rgb(0, 0, 0) 0px 2px 8px;
+    display: grid;
+    grid-template-rows: 1 1;
+    justify-content: space-between;
+    visibility: hidden;
+    
+}
+
+#ledamotDetaljBild {
+    width: 50%;
+    
+}
+
+#ledamotDetaljText {
+    width: 50%;
+}
+
+#stangDetalj {
+    width: 100px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 3.0rem;
+}
+
+.ledamotimage {
+    margin-left: 20px;
+}
+
+.ledamotTextBold {
+    font-weight: 700;
+}
+
+.ledamotText {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.0rem;
+    text-align: left;
+    margin-left: 20px;
+}
+
+#stangDetalj:hover {
+    background-color: blue;
+    cursor: pointer;
+}
+
+.ledamotInfo {
+    display: none;
+}
+
+#ledamotBildText {
+    border: 30px solid rgb(234, 234, 234);
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 50px;
+    background-color: white;
+    box-shadow: rgb(0, 0, 0) 0px 2px 8px;
+   
+}
