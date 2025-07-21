@@ -84,10 +84,12 @@
             <h1 class="bigheadline2">Riksdag</h1>
 
             <div class="brod">
-            <h2 class="ramschema">Ledamöter i Riksdagen</h2>
+                <h2 class="ramschema">Vilka är våra 349 ledamöter i Riksdagen?</h2>
+                <p class="brodtext">Sveriges riksdag består av 349 ledamöter som ska representera det svenska folkets röst. För att du ska få lite inblick i vilka dessa viktiga politiker är finns kortfattad information om dem samlad på den här webbplatsen (www.sveriges-riksdags-ledamoter.se)<br><br>
+                Filtrera med hjälp av nedanstående alternativ på antingen parti eller vilken valkrets de representerar, eller på både och. Vill du filtrera på namn kan du även göra det, men måste först välja alla partier och/eller alla valkretsar.<br><br>
+                Välj själv hur många ledamöter du vill se på varje sida i tabellen. Välj också om du vill sortera dem på namn, födelseår, parti eller valkrets - i stigande eller fallande ordning. Vill du få fram mer detaljerad information om en ledamot, klickar du på personens namn. Vill du istället se detaljerad information om alla dina sökträffar, klicka istället på knappen "Ja, visa info" under tabellen.</p>
 
             <div id="formsfilter">
-            
             
 
             <label for="partifilter" class="partifilter">Välj parti:</label>
@@ -154,15 +156,15 @@
 
         
 
-        <div id="pagination">
-            <button id="prevPage">Föregående</button>
-            <span id="pageInfo"></span>
-            <button id="nextPage">Nästa</button>
-        </div>
+            <div id="pagination">
+                <button id="prevPage">Föregående</button>
+                <span id="pageInfo"></span>
+                <button id="nextPage">Nästa</button>
+            </div>
 
-        </div>
+        
 
-            <table>
+            <table class="ledamotTabell">
                 <thead>
                     <tr>
                         <th id="sort9">Partilogo</th>
@@ -204,8 +206,8 @@
         
 
         <div class="visaInfo">
-            <span id="visaInfo">Visa info om alla ledamöter som matchar sökningen: </span>
-            <button id="jaVisaInfo">Ja, visa info</button>
+            <span id="visaInfo">Visa info om alla ledamöter som matchar sökningen? </span>
+            <button id="visaInfoKnapp">Visa info</button>
         </div>
 
 
@@ -218,19 +220,17 @@
          <div class="partiInfo">
             <span id="partiInfo"></span>
         </div>
+
+        </div>
             
             <div class="brod">
-                <h2>Denna uppgift går ut på att:</h2>
+                <h2>Härifrån kommer datan</h2>
 
                     <p class="brodtext2">
-                    • Använda <strong>FetchAPI-anrop</strong> tillsammans med <strong>async/await</strong> och <strong>try/catch</strong><br><br>
-                    • Träna på att <strong>sortera</strong> och <strong>filtrera</strong> data<br><br>
-                    • Praktiskt använda utvecklings-miljön jag skapade i tidigare moment<br><br>
-                    • Använda <strong>Git</strong> för <strong>versionshantering</strong><br><br>
+                    • Den mesta datan kommer ifrån Sveriges riksdags API med ledamotsdata. Information om detta API hittas här: <a href="https://www.riksdagen.se/sv/dokument-och-lagar/riksdagens-oppna-data/ledamoter/" target="_blank">https://www.riksdagen.se/sv/dokument-och-lagar/riksdagens-oppna-data/ledamoter/</a><br><br>
+                    • Viss data kommer också ifrån Wikipedias API och är alltså hämtade från respektive partis Wikipedia-sida. Information om detta API hittas här: <a href="https://sv.wikipedia.org/w/api.php" target="_blank">https://sv.wikipedia.org/w/api.php</a><br><br>
                     </p>
-                <p class="brodtext">
-                  Mitt <strong>Git-repository</strong> är kopplat till mitt <strong>Netlify-konto</strong> och så fort main-branch uppdateras så uppdateras denna webbplats som är publicerad via <strong>Netlify</strong>. Under tiden jag utvecklar min webbplats jobbar jag mot dev-branch för versionshantering men detta publiceras alltså inte. När jag vill publicera så mergar jag ihop dev och main så att main syncar mina senaste uppdateringar i dev.
-                </p>
+         
                 
                 
             </div>

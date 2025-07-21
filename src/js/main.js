@@ -17,6 +17,8 @@ let valdValkrets = "";
 let antalLedamoterEL = document.querySelector("#antalLedamoter");
 
 //Variabler för aktuell "sida" med sökträffar
+let paginationEl = document.querySelector("#pagination");
+
 let currentPage = 1;
 let itemsPerPage = document.querySelector("#visaAntal").value;
 
@@ -26,7 +28,7 @@ let ledamotBildTextEl = document.querySelector("#ledamotBildText");
 
 //Variabler för enskild info om klickad parti
 let partiInfoEl = document.querySelector("#partiInfo");
-let jaVisaInfoEl = document.querySelector("#jaVisaInfo");
+let visaInfoKnappEl = document.querySelector("#visaInfoKnapp");
 
 //Variabel föf ensklid extra info om klickad ledamot
 let ledamotDetaljEl = document.querySelector(".ledamotDetalj");
@@ -99,6 +101,7 @@ window.onload = () => {
         currentPage = 1;
         updateTable();
     });
+
 }
 
 
@@ -121,7 +124,7 @@ document.querySelector("#nextPage").addEventListener("click", () => {
 
 
 //Händelselyssnare för att visa/dölja alla ledamöters (sökträffarnas) extra info
-document.querySelector("#jaVisaInfo").addEventListener("click", visaAllaLedamotInfo);
+document.querySelector("#visaInfoKnapp").addEventListener("click", visaAllaLedamotInfo);
 
 
 
@@ -166,6 +169,7 @@ async function getLedamoter(valtParti, valdValkrets) {
     } catch (error) {
         console.error("Det har uppstått ett fel vid hämtning av Riksdagens API: ", error);
     }
+
 }
 
 
@@ -293,7 +297,8 @@ tbodyEl.innerHTML = "";
         <p class="ledamotText"><span class="ledamotTextBold">Född: </span>${ledamot.fodd_ar}</p>
         <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
         <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
-        <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>`;
+        <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
+        <hr><br>`;
         
 
     
@@ -307,7 +312,12 @@ tbodyEl.innerHTML = "";
         e.preventDefault();
         let id = link.getAttribute("data-id");
         visaEnsklidLedamotInfo(id);
+
+        // Scrolla ner till inforutan när den blivit synlig
+        document.querySelector(".ledamotDetalj").scrollIntoView({ behavior: "smooth" });
     });
+
+    visaInfoKnappEl.innerHTML = "Visa info";
 });
 
 }
@@ -320,8 +330,11 @@ function renderPagination(totalItems) {
 
     antalLedamoterEL.innerHTML = `${totalItems} (av totalt 349 ledamöter).`;
 
+    let pageInfoEl = document.querySelector("#pageInfo");
     let totalPages = Math.ceil(totalItems / itemsPerPage);
-    document.querySelector("#pageInfo").innerHTML = `Sida ${currentPage} av ${totalPages}`;
+
+    paginationEl.style.visibility = "visible";
+    pageInfoEl.innerHTML = `Sida ${currentPage} av ${totalPages}`;
 
     //Gör knapparna oklickbara om man är på första respektive sista sidan.
     document.querySelector("#prevPage").disabled = currentPage === 1;
@@ -468,8 +481,10 @@ function visaAllaLedamotInfo() {
 
     if (window.getComputedStyle(ledamotInfoEl).display === "none") {
         ledamotInfoEl.style.display = "flex";
+        visaInfoKnappEl.innerHTML = "Dölj info";
     } else {
         ledamotInfoEl.style.display = "none";
+        visaInfoKnappEl.innerHTML = "Visa info";
     }  
 }
 
@@ -505,7 +520,7 @@ async function visaEnsklidLedamotInfo(id) {
     //Loggan hämtas från Wikipedias API och behöver därför en await här.
     let logoUrl = await getPartiInfo(ledamot.parti);
     let logoHTML = logoUrl
-        ? `<img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:100px;">`
+        ? `<img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:50px;">`
         : "Ingen logo";
 
     console.log('ledamotDetaljTextEl:', ledamotDetaljTextEl);
@@ -525,7 +540,7 @@ async function visaEnsklidLedamotInfo(id) {
     <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
     <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
     <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
-    <button id="stangDetalj">[X] Stäng</button>`;
+    <button id="stangDetalj"><i class="fa-solid fa-square-xmark"></i> Stäng</button>`;
 
     
     ledamotDetaljEl.style.visibility = "visible";
@@ -533,6 +548,9 @@ async function visaEnsklidLedamotInfo(id) {
     //Händelselyssnare till knappen som skapas ovan som gör att display på infon ändras från flex till none (döljs).
     document.querySelector("#stangDetalj").addEventListener("click", () => {
         ledamotDetaljEl.style.visibility = "hidden";
+
+        // Scrolla upp till tabellen när inforutan döljs
+        document.querySelector(".ledamotTabell").scrollIntoView({ behavior: "smooth" });
     });
 }
 

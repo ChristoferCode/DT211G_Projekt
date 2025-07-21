@@ -13,12 +13,12 @@
 }
 
 #ledamotDetaljBild {
-    width: 50%;
+    width: 100%;
     
 }
 
 #ledamotDetaljText {
-    width: 50%;
+    width: 100%;
 }
 
 #stangDetalj {
@@ -67,4 +67,10 @@
     background-color: white;
     box-shadow: rgb(0, 0, 0) 0px 2px 8px;
    
+}
+
+hr {
+    border: 2px solid grey;
+
+    width: 95%;
 }

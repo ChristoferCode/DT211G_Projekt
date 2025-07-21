@@ -1,8 +1,8 @@
 #formsfilter {
     display: flex;
     flex-direction: column;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .partifilter {
@@ -79,11 +79,14 @@
 
 
 #pagination {
-    
+    visibility: hidden;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.6rem;
     line-height: 2.4rem;
     padding: 5px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .search {
