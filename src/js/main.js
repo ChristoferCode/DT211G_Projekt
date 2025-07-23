@@ -500,16 +500,36 @@ async function visaEnsklidLedamotInfo(id) {
     const ledamot = allLedamoter.find(p => p.intressent_id === id);
     if (!ledamot) return;
 
+    let riksdagsuppdragObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Uppdrag inom riksdag och regering");
+    let myndighetsuppdragObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Uppdrag inom statliga myndigheter m.m.");
+    let foreningsuppdragObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Uppdrag inom förenings- och näringsliv");
+    let kommunuppdragObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Kommunala uppdrag");
     let utbildningObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Utbildning");
     let anstallningarObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Anställningar");
     let epostObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Officiell e-postadress");
 
+    let riksdagsuppdrag = riksdagsuppdragObjekt && riksdagsuppdragObjekt.uppgift.length > 0
+        ? '<ul class="uppdragLista">• ' + riksdagsuppdragObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
+        : "Ingen info";
+
+    let myndighetsuppdrag = myndighetsuppdragObjekt && myndighetsuppdragObjekt.uppgift.length > 0
+        ? '<ul class="uppdragLista">• ' + myndighetsuppdragObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
+        : "Ingen info";
+
+    let foreningsuppdrag = foreningsuppdragObjekt && foreningsuppdragObjekt.uppgift.length > 0
+        ? '<ul class="uppdragLista">• ' + foreningsuppdragObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
+        : "Ingen info";
+
+    let kommunuppdrag = kommunuppdragObjekt && kommunuppdragObjekt.uppgift.length > 0
+        ? '<ul class="uppdragLista">• ' + kommunuppdragObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
+        : "Ingen info";
+
     let utbildning = utbildningObjekt && utbildningObjekt.uppgift.length > 0
-        ? utbildningObjekt.uppgift[0]
+        ? '<ul class="uppdragLista">• ' + utbildningObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
         : "Ingen info";
 
     let anstallningar = anstallningarObjekt && anstallningarObjekt.uppgift.length > 0
-        ? anstallningarObjekt.uppgift[0]
+        ? '<ul class="uppdragLista">• ' + anstallningarObjekt.uppgift[0].replace(/\.(\s+)(?=\S)/g, '.<br><br>• ') + '<br><br></ul>'
         : "Ingen info";
 
     //Epost-adressen behöver få ett @ eftersom det inte fanns med i API-datan (kanske pga spamskäl men är ju lätt att ersätta för någon som vill utföra en attack så kunde väl lika gärna varit där...). Passar även på att göra adressen till en mailto-länk.
@@ -537,6 +557,10 @@ async function visaEnsklidLedamotInfo(id) {
     `<p class="ledamotText">${logoHTML}</p>
     <p class="ledamotText"><span class="ledamotTextBold">Namn: </span>${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
     <p class="ledamotText"><span class="ledamotTextBold">Född: </span>${ledamot.fodd_ar}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Uppdrag inom riksdag och regering: </span>${riksdagsuppdrag}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Uppdrag inom statliga myndigheter m.m.: </span>${myndighetsuppdrag}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Uppdrag inom förenings- och näringsliv: </span>${foreningsuppdrag}</p>
+    <p class="ledamotText"><span class="ledamotTextBold">Kommunala uppdrag: </span>${kommunuppdrag}</p>
     <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
     <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
     <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
