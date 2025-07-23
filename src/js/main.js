@@ -20,7 +20,7 @@ let antalLedamoterEL = document.querySelector("#antalLedamoter");
 let paginationEl = document.querySelector("#pagination");
 
 let currentPage = 1;
-let itemsPerPage = document.querySelector("#visaAntal").value;
+let itemsPerPage = parseInt(document.querySelector("#visaAntal").value, 10);
 
 //Variabler för extra info om alla ledamöter i sökträffen
 let ledamotInfoEl = document.querySelector(".ledamotInfo");
@@ -572,9 +572,11 @@ async function visaEnsklidLedamotInfo(id) {
     //Händelselyssnare till knappen som skapas ovan som gör att display på infon ändras från flex till none (döljs).
     document.querySelector("#stangDetalj").addEventListener("click", () => {
         ledamotDetaljEl.style.visibility = "hidden";
+        ledamotDetaljBildEl.innerHTML = "";
+        ledamotDetaljTextEl.innerHTML = "";
 
-        // Scrolla upp till tabellen när inforutan döljs
-        document.querySelector(".ledamotTabell").scrollIntoView({ behavior: "smooth" });
+    // Scrolla upp till tabellen när inforutan döljs
+    document.querySelector(".ledamotTabell").scrollIntoView({ behavior: "smooth" });
     });
 }
 
