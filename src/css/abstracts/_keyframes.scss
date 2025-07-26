@@ -2,6 +2,31 @@
 
 
 
+@keyframes sveriges {
+    0% {
+        transform: translate(-200vw, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);    
+    }
+}
+
+
+
+@keyframes riksdag {
+    0% {
+        transform: translate(200vw, 0);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+
+
+
 
 // @keyframes rotateGradient {
 //     0% {

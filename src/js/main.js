@@ -299,9 +299,10 @@ tbodyEl.innerHTML = "";
         <p class="ledamotText">${logoHTML}</p>
         <p class="ledamotText"><span class="ledamotTextBold">Namn: </span>${ledamot.tilltalsnamn} ${ledamot.efternamn}</p>
         <p class="ledamotText"><span class="ledamotTextBold">Född: </span>${ledamot.fodd_ar}</p>
-        <p class="ledamotText"><span class="ledamotTextBold">Utbildning: </span>${utbildning}</p>
-        <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">Parti: </span>${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})
+        <p class="ledamotText"><span class="ledamotTextBold">Valkrets: </span>${ledamot.valkrets}
         <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
+        <p class="ledamotText"><span class="ledamotTextBold">Mer info: </span><a href="#" class="ledamot-namn" data-id="${ledamot.intressent_id}">Klicka här</a></p>
         <hr><br>`;
         
 
@@ -321,7 +322,7 @@ tbodyEl.innerHTML = "";
         document.querySelector(".ledamotDetalj").scrollIntoView({ behavior: "smooth" });
     });
 
-    visaInfoKnappEl.innerHTML = "Visa info";
+    visaInfoKnappEl.innerHTML = 'Visa info <i class="fa-solid fa-angle-down"></i>';
 });
 
 }
@@ -494,10 +495,10 @@ function visaAllaLedamotInfo() {
 
     if (window.getComputedStyle(ledamotInfoEl).display === "none") {
         ledamotInfoEl.style.display = "flex";
-        visaInfoKnappEl.innerHTML = "Dölj info";
+        visaInfoKnappEl.innerHTML = 'Dölj info <i class="fa-solid fa-angle-up"></i>';
     } else {
         ledamotInfoEl.style.display = "none";
-        visaInfoKnappEl.innerHTML = "Visa info";
+        visaInfoKnappEl.innerHTML = 'Visa info <i class="fa-solid fa-angle-down"></i>';
     }  
 }
 

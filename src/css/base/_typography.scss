@@ -29,6 +29,10 @@ $font-stack2: 'Courier New', Courier, monospace;
     -webkit-text-stroke: 2px $bigheadline-stroke-light;
     text-shadow: $bigheadline-shadow-light 1px 1px 20px;
     text-transform: uppercase;
+    animation-name: sveriges;
+    animation-duration: 3s;
+    transition: ease-out;
+    
 }
 
 .bigheadline2 {
@@ -44,6 +48,10 @@ $font-stack2: 'Courier New', Courier, monospace;
     -webkit-text-stroke: 2px $bigheadline-stroke-light;
     text-shadow: $bigheadline-shadow-light 1px 1px 20px;
     text-transform: uppercase;
+    animation-name: riksdag;
+    animation-duration: 3s;
+    transition: ease-out;
+
 }
 
 .bigheadlineanimate {

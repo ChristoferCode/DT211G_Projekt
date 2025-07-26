@@ -25,46 +25,7 @@
     <div id="startcontainer">
         <header>
             <div id="header">
-                <p id="headertext"><a href="index.html" id="start">Start</a></p>
-
-                <button id="open-menu">
-                    <span class="menutextopen">Meny</span>
-                    <span id="open-menu-icon">
-                        <span class="bar1"></span>
-                        <span class="bar2"></span>
-                        <span class="bar3"></span>
-                    </span>
-                </button>
-
-                <button id="close-menu">
-                    <span class="menutextclose">Stäng</span>
-                    <span id="close-menu-icon">
-                        <span class="bar1close"></span>
-                        <span class="bar2close"></span>
-                        <span class="bar3close"></span>
-                    </span>
-                </button>
-
-                <nav>
-
-                    <ul id="menu">
-                        <li>
-                            <a href="#" class="link"><div class="linkbutton">Link 1</div></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><div class="linkbutton">Link 2</div></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><div class="linkbutton">Link 3</div></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><div class="linkbutton">Link 4</div></a>
-                        </li>
-                        <li>
-                            <a href="#" class="link"><div class="linkbutton">Link 5</div></a>
-                        </li>
-                    </ul>
-                </nav>
+                <p id="headertext"><a href="index.html" id="start">Svergies-riksdagsledamoter.se</a></p>
             </div>
         </header>
 
@@ -84,10 +45,11 @@
             <h1 class="bigheadline2">Riksdag</h1>
 
             <div class="brod">
-                <h2 class="ramschema">Vilka är våra 349 ledamöter i Riksdagen?</h2>
-                <p class="brodtext">Sveriges riksdag består av 349 ledamöter som ska representera det svenska folkets röst. För att du ska få lite inblick i vilka dessa viktiga politiker är finns kortfattad information om dem samlad på den här webbplatsen (www.sveriges-riksdags-ledamoter.se)<br><br>
-                Filtrera med hjälp av nedanstående alternativ på antingen parti eller vilken valkrets de representerar, eller på både och. Vill du filtrera på namn kan du även göra det, men måste först välja alla partier och/eller alla valkretsar.<br><br>
-                Välj själv hur många ledamöter du vill se på varje sida i tabellen. Välj också om du vill sortera dem på namn, födelseår, parti eller valkrets - i stigande eller fallande ordning. Vill du få fram mer detaljerad information om en ledamot, klickar du på personens namn. Vill du istället se detaljerad information om alla dina sökträffar, klicka istället på knappen "Ja, visa info" under tabellen.</p>
+                <h2 class="ramschema">Vilka är våra 349 ledamöter i riksdagen?</h2>
+                <p class="brodtext"><strong>Sveriges riksdag</strong> består av <strong>349 ledamöter</strong> som ska representera det svenska folkets röst. För att du ska få lite inblick i vilka dessa viktiga politiker är finns kortfattad information om dem samlad på den här webbplatsen (<em>www.sveriges-riksdagsledamoter.se</em>)<br><br>
+                <strong>Filtrera</strong> med hjälp av nedanstående alternativ på antingen <strong>parti</strong> eller vilken <strong>valkrets</strong> de representerar, eller på <strong>både och</strong>. Vill du filtrera på namn kan du även göra det, men måste först välja alla partier och/eller alla valkretsar.<br><br>
+                Välj själv hur många ledamöter du vill se på varje sida i tabellen. Välj också om du vill sortera dem på namn, födelseår, parti eller valkrets - i stigande eller fallande ordning. <br><br>
+                Vill du få fram mer <strong>detaljerad information</strong> om en ledamot (uppdrag, utbildning, tidigare anställningar mm), klickar du på <strong>personens namn</strong>. Vill du istället se bild och kortfattad information om <strong>alla dina sökträffar</strong>, klicka istället på knappen <strong>"Visa info"</strong> under tabellen. Ifrån den här vyn kan du också klicka fram en enskild ledamots detaljerade info (samma som att klicka på personens namn i tabellen).</p>
 
             <div id="formsfilter">
             
@@ -155,15 +117,18 @@
             <output id="antaloutput">10</output>
 
         
+            <div class="resultat">
+                <span id="resultat">Sökresultat:</span>
+            </div>
 
             <div class="pagination">
-                <button class="prevPage">Föregående</button>
+                <button class="prevPage"><i class="fa-solid fa-angle-left"></i> Föregående</button>
                 <span class="pageInfo"></span>
-                <button class="nextPage">Nästa</button>
+                <button class="nextPage">Nästa <i class="fa-solid fa-angle-right"></i></button>
             </div>
-        
-
+            
             <table class="ledamotTabell">
+
                 <thead>
                     <tr>
                         <th id="sort9">Partilogo</th>
@@ -195,9 +160,9 @@
 
         
             <div class="pagination">
-                <button class="prevPage">Föregående</button>
+                <button class="prevPage"><i class="fa-solid fa-angle-left"></i> Föregående</button>
                 <span class="pageInfo"></span>
-                <button class="nextPage">Nästa</button>
+                <button class="nextPage">Nästa <i class="fa-solid fa-angle-right"></i></button>
             </div>
 
         </div>
@@ -213,8 +178,8 @@
         
 
         <div class="visaInfo">
-            <span id="visaInfo">Visa info om alla ledamöter som matchar sökningen? </span>
-            <button id="visaInfoKnapp">Visa info</button>
+            <span id="visaInfo">Visa bild och info om alla ledamöter som matchar sökningen?</span>
+            <button id="visaInfoKnapp">Visa info <i class="fa-solid fa-angle-down"></i></button>
         </div>
 
 
