@@ -80,7 +80,7 @@ tbody {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.6rem;
     line-height: 2.4rem;
-    background-color: black;
+    background-color: rgb(0, 136, 255);
     color: rgb(242, 255, 64);
 }
 
@@ -114,7 +114,7 @@ td a:visited {
     display: block;
     text-decoration: none;
     cursor: pointer;
-    color: rgb(3, 159, 26);
+    color: rgb(12, 3, 114);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
@@ -123,7 +123,7 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(3, 108, 200);
     box-shadow: rgb(242, 255, 64) 0px -2px 8px;
 }
 
@@ -166,7 +166,7 @@ tfoot {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.4rem;
         line-height: 2.8rem;
-        background-color: black;
+        background-color: rgb(0, 136, 255);
         color: rgb(242, 255, 64);
     }
 }
@@ -187,7 +187,7 @@ tfoot {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.0rem;
         line-height: 2.0rem;
-        background-color: black;
+        background-color:rgb(0, 136, 255);
         color: rgb(242, 255, 64);
     }
 }

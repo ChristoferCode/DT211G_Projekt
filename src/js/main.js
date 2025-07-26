@@ -17,7 +17,7 @@ let valdValkrets = "";
 let antalLedamoterEL = document.querySelector("#antalLedamoter");
 
 //Variabler för aktuell "sida" med sökträffar
-let paginationEl = document.querySelector("#pagination");
+let paginationEl = document.querySelectorAll(".pagination");
 
 let currentPage = 1;
 let itemsPerPage = parseInt(document.querySelector("#visaAntal").value, 10);
@@ -106,20 +106,24 @@ window.onload = () => {
 
 
 //Händelselyssnare för att blädra bakåt bland "sidorna".
-document.querySelector("#prevPage").addEventListener("click", () => {
-    if (currentPage > 1) {
-        currentPage--;
-        updateTable();
-    }
+document.querySelectorAll(".prevPage").forEach (btn => {
+    btn.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            updateTable();
+        }
+    });
 });
 
 
 //Händelselyssnare för att blädra framåt bland "sidorna".
-document.querySelector("#nextPage").addEventListener("click", () => {
-    if ((currentPage * itemsPerPage) < (filteredLedamoter.length || ledamoter.length)) {
-        currentPage++;
-        updateTable();
-    }
+document.querySelectorAll(".nextPage").forEach (btn => {
+    btn.addEventListener("click", () => {
+        if ((currentPage * itemsPerPage) < (filteredLedamoter.length || ledamoter.length)) {
+            currentPage++;
+            updateTable();
+        }
+    });
 });
 
 
@@ -330,15 +334,24 @@ function renderPagination(totalItems) {
 
     antalLedamoterEL.innerHTML = `${totalItems} (av totalt 349 ledamöter).`;
 
-    let pageInfoEl = document.querySelector("#pageInfo");
+    let pageInfoEl = document.querySelectorAll(".pageInfo");
     let totalPages = Math.ceil(totalItems / itemsPerPage);
 
-    paginationEl.style.visibility = "visible";
-    pageInfoEl.innerHTML = `Sida ${currentPage} av ${totalPages}`;
+    paginationEl.forEach (pagi => {
+        pagi.style.visibility = "visible";
+    });
+
+    pageInfoEl.forEach (page => {
+        page.innerHTML = `Sida ${currentPage} av ${totalPages}`;
+    });
 
     //Gör knapparna oklickbara om man är på första respektive sista sidan.
-    document.querySelector("#prevPage").disabled = currentPage === 1;
-    document.querySelector("#nextPage").disabled = currentPage === totalPages;
+    document.querySelectorAll(".prevPage").forEach (btn => {
+        btn.disabled = currentPage === 1;
+    });
+    document.querySelectorAll(".nextPage").forEach (btn => {
+        btn.disabled = currentPage === totalPages;
+    });
 
     console.log("itemsPerPage: " + itemsPerPage);
 }
