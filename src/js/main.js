@@ -18,6 +18,7 @@ let antalLedamoterEL = document.querySelector("#antalLedamoter");
 
 //Variabler för aktuell "sida" med sökträffar
 let paginationEl = document.querySelectorAll(".pagination");
+let pagination2El = document.querySelector(".pagination2");
 
 let currentPage = 1;
 let itemsPerPage = parseInt(document.querySelector("#visaAntal").value, 10);
@@ -494,9 +495,11 @@ function visaAllaLedamotInfo() {
     console.log("Här fortsätter min funktion visaLedamotInfo...");
 
     if (window.getComputedStyle(ledamotInfoEl).display === "none") {
+        pagination2El.style.visibility = "visible";
         ledamotInfoEl.style.display = "flex";
         visaInfoKnappEl.innerHTML = 'Dölj info <i class="fa-solid fa-angle-up"></i>';
     } else {
+        pagination2El.style.visibility = "hidden";
         ledamotInfoEl.style.display = "none";
         visaInfoKnappEl.innerHTML = 'Visa info <i class="fa-solid fa-angle-down"></i>';
     }  
