@@ -36,3 +36,12 @@ $font-stack2: 'Courier New', Courier, monospace;
     max-width: 500px;
 }
 
+
+
+@media only screen and (max-width: 540px) {
+    .brod {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+}
