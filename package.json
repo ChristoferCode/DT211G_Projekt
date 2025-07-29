@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.15.4",
+    "jsdoc": "^4.0.4",
     "parcel": "^2.15.4",
     "sharp": "^0.33.5"
   }

@@ -1,15 +1,15 @@
-.ramschema {
+.rubriken {
     margin-bottom: 50px;
     font-size: 3.4rem;
 }
 
 
 #sort1 {
-    width: 25%;
+    width: 35%;
 }
 
 #sort2 {
-    width: 25%;
+    width: 10%;
 }
 
 #sort3 {
@@ -20,35 +20,39 @@
     width: 15%;
 }
 
+#sort9 {
+    width: 10%;
+}
+
 #sort1:hover {
     background-color: rgb(242, 255, 64);
-    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+  
     cursor: pointer;
-    color: rgb(0, 91, 61);
+    color: rgb(0, 136, 255);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
 #sort2:hover {
     background-color: rgb(242, 255, 64);
-    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+  
     cursor: pointer;
-    color: rgb(0, 91, 61);
+    color: rgb(0, 136, 255);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
 #sort3:hover {
     background-color: rgb(242, 255, 64);
-    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+ 
     cursor: pointer;
-    color: rgb(0, 91, 61);
+    color: rgb(0, 136, 255);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
 #sort4:hover {
     background-color: rgb(242, 255, 64);
-    box-shadow: rgb(255, 255, 255) 0px 2px 8px;
+ 
     cursor: pointer;
-    color: rgb(0, 91, 61);
+    color: rgb(0, 136, 255);
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
