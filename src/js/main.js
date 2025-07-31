@@ -47,6 +47,7 @@ let partiDetaljTextEl = document.querySelector("#partiDetaljText");
 
 //Deklarerar en variabel som cashar de hämtade partiloggorna.
 let partiLogoCache = {};
+let partiInfoCache = {};
 
 console.log("Logocashe: " + partiLogoCache);
 
@@ -257,8 +258,8 @@ async function getPartiInfo(partiTitle) {
      
 
     // Om vi redan har loggan sparad – använd den
-    if (partiLogoCache[partiTitle]) {
-        return partiLogoCache[partiTitle];
+    if (partiInfoCache[partiTitle]) {
+        return partiInfoCache[partiTitle];
     }
 
 
@@ -285,7 +286,9 @@ async function getPartiInfo(partiTitle) {
         console.log("logoUrl: " + logoUrl);
         console.log("partiInfo: " + partiInfo);
 
-        return {logoUrl, partiInfo};
+        const result = {logoUrl, partiInfo};
+        partiInfoCache[partiTitle] = result;
+        return result;
 
 
 
@@ -316,46 +319,7 @@ async function getPartiInfo2TEST(partikod) {
         console.warn("Ingen titel hittades för partikod:", partikod);
         return null;
     }
-
-    try {
-        const response = await fetch(
-            `https://sv.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts|pageimages&exintro=true&pithumbsize=300&titles=${encodeURIComponent(title)}`
-        );
-
-       
-        const data = await response.json();
-
-        const pages = data.query.pages;
-        console.log("pages: ",pages);
-
-        const page = Object.values(pages)[0];
-        console.log("page: " ,page);
-
-        const logoUrl = page?.thumbnail?.source || null;
-        const partiInfo = page?.extract || null;
-       
-        const result = {logoUrl, partiInfo};
-
-     
-        console.log("logoUrl: " + logoUrl);
-        console.log("partiInfo: " + partiInfo);
-        console.log("Response från Wikipedia:", page);
-          
-      
-    
-
-        return {logoUrl, partiInfo};
-
-
-
-
-    } catch (error) {
-        console.error("Det har uppstått ett fel: ", error);
-        return null;
-    }
-    
 }
-
 
 /**
 * //Funktion som updateraar tabellen med nya reslutat varje gång man förändrar filtrering eller hur många som ska visas på varje "sida". Nollar också det som skrivs ut som extra info om alla ledamöter så den infon försvinner inför en ny sökfilrering. 
