@@ -172,6 +172,20 @@ hr {
         visibility: hidden;
     }
 
+    .partiDetalj {
+        border: 30px solid rgb(234, 234, 234);
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 50px;
+        padding-top: 20px;
+        background-color: white;
+        box-shadow: rgb(0, 0, 0) 0px 2px 8px;
+        display: flex;
+        
+        justify-content: space-between;
+        visibility: hidden;
+    }
+
     #ledamotBildText {
         border: 30px solid rgb(234, 234, 234);
         margin-left: 0px;
