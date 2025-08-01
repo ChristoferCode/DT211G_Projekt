@@ -208,8 +208,11 @@ async function getPartiLogo(partikod) {
     //Hämtar rätt titel på partierna i wikipedia-urlen baserat på partikod från riksdagens API
     let title = partiWikiTitles[partikod];
     console.log("title: " + title);
-    if (!title) return null;
-
+    if (!title) {
+        console.warn("Ingen titel hittades för partikod:", partikod);
+        return null;
+    }
+    
     try {
         const response = await fetch(
             `https://sv.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=extracts|pageimages&exintro=true&pithumbsize=300&titles=${encodeURIComponent(title)}`
@@ -244,11 +247,9 @@ async function getPartiLogo(partikod) {
 }
 
 
-
-
 /**
 * //Funktion som fetchar API från en url (Wikipedias API, i det här fallet riksdagspartiernas sidor) med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
-* @param {string} partikod -En variabel som visar vilket parti en ledamot tillhör (hämtas från sveriges riksdags API)
+* @param {string} partiTitle -En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).
 */
 async function getPartiInfo(partiTitle) {
 
@@ -286,6 +287,7 @@ async function getPartiInfo(partiTitle) {
         console.log("logoUrl: " + logoUrl);
         console.log("partiInfo: " + partiInfo);
 
+        //Eftersom jag vill returnera flera parametrar (både partilogo och partiinfo) skapar jag en variabel som innehåller båda.
         const result = {logoUrl, partiInfo};
         partiInfoCache[partiTitle] = result;
         return result;
@@ -300,26 +302,6 @@ async function getPartiInfo(partiTitle) {
 }
 
 
-
-/**
-* //Funktion som fetchar API från en url (Wikipedias API, i det här fallet riksdagspartiernas sidor) med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
-* @param {string} partikod -En variabel som visar vilket parti en ledamot tillhör (hämtas från sveriges riksdags API)
-*/
-async function getPartiInfo2TEST(partikod) {
-
-    console.log("Här fortsätter min funktion getPartiInfo...");
-    console.log("partikod: " + partikod);
-
-
-    //Hämtar rätt titel på partierna i wikipedia-utlen baserat på partikod från riksdagens API
-
-    let title = partiWikiTitles[partikod];
-    console.log("partikod:", partikod, "-> title:", title);
-    if (!title) {
-        console.warn("Ingen titel hittades för partikod:", partikod);
-        return null;
-    }
-}
 
 /**
 * //Funktion som updateraar tabellen med nya reslutat varje gång man förändrar filtrering eller hur många som ska visas på varje "sida". Nollar också det som skrivs ut som extra info om alla ledamöter så den infon försvinner inför en ny sökfilrering. 
@@ -407,8 +389,6 @@ tbodyEl.innerHTML = "";
         <hr><br>`;
         
 
-    
-
         console.log("Logotyp-URL: " + logoHTML);
     }
 
@@ -424,24 +404,21 @@ tbodyEl.innerHTML = "";
     });
 
   
-   
-
-
-    visaInfoKnappEl.innerHTML = 'Visa info <i class="fa-solid fa-angle-down"></i>';
-});
-
-  //Har ovan gjort varje namn till en "död" #-länk (för att bli klickbar) med en class och här ges de ett unikt ID för att kunna generear rätt individuell ledamot-info. IDt som används hämtas från APIet som smidigt nog hade ett unikt ID på varje ledamot.
-    document.querySelectorAll(".parti-namn").forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        let partiTitle = link.getAttribute("data-title");
-        visaPartiInfo(partiTitle);
-
-        // Scrolla ner till inforutan när den blivit synlig
-        document.querySelector("#partiInfo").scrollIntoView({ behavior: "smooth" });
+        visaInfoKnappEl.innerHTML = 'Visa info <i class="fa-solid fa-angle-down"></i>';
     });
-    
-});
+
+    //Har ovan gjort varje namn till en "död" #-länk (för att bli klickbar) med en class och här ges de ett unikt ID för att kunna generear rätt individuell ledamot-info. IDt som används hämtas från APIet som smidigt nog hade ett unikt ID på varje ledamot.
+        document.querySelectorAll(".parti-namn").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            let partiTitle = link.getAttribute("data-title");
+            visaPartiInfo(partiTitle);
+
+            // Scrolla ner till inforutan när den blivit synlig
+            document.querySelector("#partiInfo").scrollIntoView({ behavior: "smooth" });
+        });
+        
+    });
 
 }
 
@@ -737,6 +714,10 @@ async function visaEnsklidLedamotInfo(id) {
 }
 
 
+/**
+* //Funktion som gör att det visas enskild info om det parti man klickar på (partinamnet är klickbart) i tabellen med sökträffar.
+* @param {string} partiTitle -En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).
+*/
 async function visaPartiInfo(partiTitle) {
     console.log("Här fortsätter min funktion visaPartiInfo...");
 
