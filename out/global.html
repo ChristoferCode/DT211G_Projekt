@@ -156,7 +156,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line142">line 142</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line147">line 147</a>
     </li></ul></dd>
     
 
@@ -293,7 +293,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line266">line 266</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line332">line 332</a>
     </li></ul></dd>
     
 
@@ -381,7 +381,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line384">line 384</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line462">line 462</a>
     </li></ul></dd>
     
 
@@ -541,7 +541,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line160">line 160</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line165">line 165</a>
     </li></ul></dd>
     
 
@@ -577,7 +577,144 @@
     
 
     
-    <h4 class="name" id="getPartiInfo"><span class="type-signature">(async) </span>getPartiInfo<span class="signature">(partikod)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="getPartiInfo"><span class="type-signature">(async) </span>getPartiInfo<span class="signature">(partiTitle)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    //Funktion som fetchar API från en url (Wikipedias API, i det här fallet riksdagspartiernas sidor) med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>partiTitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line254">line 254</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getPartiLogo"><span class="type-signature">(async) </span>getPartiLogo<span class="signature">(partikod)</span><span class="type-signature"></span></h4>
     
 
     
@@ -678,7 +815,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line193">line 193</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line198">line 198</a>
     </li></ul></dd>
     
 
@@ -815,7 +952,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line352">line 352</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line430">line 430</a>
     </li></ul></dd>
     
 
@@ -903,7 +1040,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line410">line 410</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line488">line 488</a>
     </li></ul></dd>
     
 
@@ -991,7 +1128,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line438">line 438</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line516">line 516</a>
     </li></ul></dd>
     
 
@@ -1079,7 +1216,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line467">line 467</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line545">line 545</a>
     </li></ul></dd>
     
 
@@ -1167,7 +1304,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line496">line 496</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line574">line 574</a>
     </li></ul></dd>
     
 
@@ -1255,7 +1392,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line243">line 243</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -1343,7 +1480,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line524">line 524</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line602">line 602</a>
     </li></ul></dd>
     
 
@@ -1480,7 +1617,144 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="main.js.html">main.js</a>, <a href="main.js.html#line544">line 544</a>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line622">line 622</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="visaPartiInfo"><span class="type-signature">(async) </span>visaPartiInfo<span class="signature">(partiTitle)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    //Funktion som gör att det visas enskild info om det parti man klickar på (partinamnet är klickbart) i tabellen med sökträffar.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>partiTitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="main.js.html">main.js</a>, <a href="main.js.html#line721">line 721</a>
     </li></ul></dd>
     
 
@@ -1526,13 +1800,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#applyFilters">applyFilters</a></li><li><a href="global.html#dataToTable">dataToTable</a></li><li><a href="global.html#filterLedamoter">filterLedamoter</a></li><li><a href="global.html#getLedamoter">getLedamoter</a></li><li><a href="global.html#getPartiInfo">getPartiInfo</a></li><li><a href="global.html#renderPagination">renderPagination</a></li><li><a href="global.html#sortLedamoter1">sortLedamoter1</a></li><li><a href="global.html#sortLedamoter2">sortLedamoter2</a></li><li><a href="global.html#sortLedamoter3">sortLedamoter3</a></li><li><a href="global.html#sortLedamoter4">sortLedamoter4</a></li><li><a href="global.html#updateTable">updateTable</a></li><li><a href="global.html#visaAllaLedamotInfo">visaAllaLedamotInfo</a></li><li><a href="global.html#visaEnsklidLedamotInfo">visaEnsklidLedamotInfo</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#applyFilters">applyFilters</a></li><li><a href="global.html#dataToTable">dataToTable</a></li><li><a href="global.html#filterLedamoter">filterLedamoter</a></li><li><a href="global.html#getLedamoter">getLedamoter</a></li><li><a href="global.html#getPartiInfo">getPartiInfo</a></li><li><a href="global.html#getPartiLogo">getPartiLogo</a></li><li><a href="global.html#renderPagination">renderPagination</a></li><li><a href="global.html#sortLedamoter1">sortLedamoter1</a></li><li><a href="global.html#sortLedamoter2">sortLedamoter2</a></li><li><a href="global.html#sortLedamoter3">sortLedamoter3</a></li><li><a href="global.html#sortLedamoter4">sortLedamoter4</a></li><li><a href="global.html#updateTable">updateTable</a></li><li><a href="global.html#visaAllaLedamotInfo">visaAllaLedamotInfo</a></li><li><a href="global.html#visaEnsklidLedamotInfo">visaEnsklidLedamotInfo</a></li><li><a href="global.html#visaPartiInfo">visaPartiInfo</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Jul 29 2025 15:11:23 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Aug 01 2025 18:58:08 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -61,16 +61,21 @@ let ledamotBildTextEl = document.querySelector("#ledamotBildText");
 let partiInfoEl = document.querySelector("#partiInfo");
 let visaInfoKnappEl = document.querySelector("#visaInfoKnapp");
 
-//Variabel föf ensklid extra info om klickad ledamot
+//Variabel för ensklid extra info om klickad ledamot
 let ledamotDetaljEl = document.querySelector(".ledamotDetalj");
 let ledamotDetaljBildEl = document.querySelector("#ledamotDetaljBild");
 let ledamotDetaljTextEl = document.querySelector("#ledamotDetaljText");
+
+//Variabel för ensklid extra info om klickad parti
+let partiDetaljEl = document.querySelector(".partiDetalj");
+let partiDetaljTextEl = document.querySelector("#partiDetaljText");
 
 
 
 
 //Deklarerar en variabel som cashar de hämtade partiloggorna.
 let partiLogoCache = {};
+let partiInfoCache = {};
 
 console.log("Logocashe: " + partiLogoCache);
 
@@ -218,9 +223,9 @@ async function getLedamoter(valtParti, valdValkrets) {
 * //Funktion som fetchar API från en url (Wikipedias API, i det här fallet riksdagspartiernas sidor) med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
 * @param {string} partikod -En variabel som visar vilket parti en ledamot tillhör (hämtas från sveriges riksdags API)
 */
-async function getPartiInfo(partikod) {
+async function getPartiLogo(partikod) {
 
-    console.log("Här fortsätter min funktion getPartiInfo...");
+    console.log("Här fortsätter min funktion getPartiLogo...");
     console.log("partikod: " + partikod);
 
     // Om vi redan har loggan sparad – använd den
@@ -228,10 +233,14 @@ async function getPartiInfo(partikod) {
         return partiLogoCache[partikod];
     }
 
-    //Hämtar rätt titel på partierna i wikipedia-utlen baserat på partikod från riksdagens API
+    //Hämtar rätt titel på partierna i wikipedia-urlen baserat på partikod från riksdagens API
     let title = partiWikiTitles[partikod];
-    if (!title) return null;
-
+    console.log("title: " + title);
+    if (!title) {
+        console.warn("Ingen titel hittades för partikod:", partikod);
+        return null;
+    }
+    
     try {
         const response = await fetch(
             `https://sv.wikipedia.org/w/api.php?action=query&amp;format=json&amp;origin=*&amp;prop=extracts|pageimages&amp;exintro=true&amp;pithumbsize=300&amp;titles=${encodeURIComponent(title)}`
@@ -241,10 +250,10 @@ async function getPartiInfo(partikod) {
         const data = await response.json();
 
         const pages = data.query.pages;
-        console.log("pages: " + pages);
+        console.log("pages: " ,pages);
 
         const page = Object.values(pages)[0];
-        console.log("page: " + page);
+        console.log("page: " ,page);
 
         const logoUrl = page?.thumbnail?.source || null;
 
@@ -252,6 +261,7 @@ async function getPartiInfo(partikod) {
         partiLogoCache[partikod] = logoUrl;
         
         console.log("logoUrl: " + logoUrl);
+     
 
         return logoUrl;
 
@@ -263,6 +273,62 @@ async function getPartiInfo(partikod) {
     }
     
 }
+
+
+/**
+* //Funktion som fetchar API från en url (Wikipedias API, i det här fallet riksdagspartiernas sidor) med async/await för att invänta att svaret hinner komma, samt try/catch för att kunna leverera ett felmedelande om något misslyckats men ändå kör vidare koden (vilket är ganska meningslöst i det här fallet eftersom den inte kan göra något utan API-datan...)
+* @param {string} partiTitle -En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).
+*/
+async function getPartiInfo(partiTitle) {
+
+    console.log("Här fortsätter min funktion getPartiInfo...");
+    console.log("partiTitle: " + partiTitle);
+   
+     
+
+    // Om vi redan har loggan sparad – använd den
+    if (partiInfoCache[partiTitle]) {
+        return partiInfoCache[partiTitle];
+    }
+
+
+    try {
+        const response = await fetch(
+            `https://sv.wikipedia.org/w/api.php?action=query&amp;format=json&amp;origin=*&amp;prop=extracts|pageimages&amp;exintro=true&amp;pithumbsize=300&amp;titles=${encodeURIComponent(partiTitle)}`
+        );
+
+       
+        const data = await response.json();
+
+        const pages = data.query.pages;
+        console.log("pages: " ,pages);
+
+        const page = Object.values(pages)[0];
+        console.log("page: " ,page);
+
+        const logoUrl = page?.thumbnail?.source || null;
+        const partiInfo = page?.extract || null;
+
+        // Cacha resultatet
+        partiLogoCache[partiTitle] = logoUrl;
+        
+        console.log("logoUrl: " + logoUrl);
+        console.log("partiInfo: " + partiInfo);
+
+        //Eftersom jag vill returnera flera parametrar (både partilogo och partiinfo) skapar jag en variabel som innehåller båda.
+        const result = {logoUrl, partiInfo};
+        partiInfoCache[partiTitle] = result;
+        return result;
+
+
+
+    } catch (error) {
+        console.error("Det har uppstått ett fel: ", error);
+        return null;
+    }
+    
+}
+
 
 
 /**
@@ -320,7 +386,7 @@ tbodyEl.innerHTML = "";
             : "Ingen info";
 
         //Loggan hämtas från Wikipedias API och behöver därför en await här.
-        let logoUrl = await getPartiInfo(ledamot.parti);
+        let logoUrl = await getPartiLogo(ledamot.parti);
 
         let logoHTML = logoUrl
             ? `&lt;img src="${logoUrl}" alt="${partiFullName[ledamot.parti] || ledamot.parti} logotyp" style="height:50px;">`
@@ -332,7 +398,7 @@ tbodyEl.innerHTML = "";
         &lt;td id="td6">${logoHTML}&lt;/td>
         &lt;td id="td1">&lt;a href="#" class="ledamot-namn" data-id="${ledamot.intressent_id}">${ledamot.sorteringsnamn}&lt;/a>&lt;/td>
         &lt;td id="td2">${ledamot.fodd_ar}&lt;/td>
-        &lt;td id="td3">${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})&lt;/td>
+        &lt;td id="td3">&lt;a href="#" class="parti-namn" data-parti="${ledamot.parti}" data-title="${partiWikiTitles[ledamot.parti]}">${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})&lt;/a>&lt;/td>
         &lt;td id="td4">${ledamot.valkrets}&lt;/td>
         &lt;/tr>`;
 
@@ -344,14 +410,12 @@ tbodyEl.innerHTML = "";
         &lt;p class="ledamotText">${logoHTML}&lt;/p>
         &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Namn: &lt;/span>${ledamot.tilltalsnamn} ${ledamot.efternamn}&lt;/p>
         &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Född: &lt;/span>${ledamot.fodd_ar}&lt;/p>
-        &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Parti: &lt;/span>${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})
-        &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Valkrets: &lt;/span>${ledamot.valkrets}
+        &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Parti: &lt;/span>${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})&lt;/p>
+        &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Valkrets: &lt;/span>${ledamot.valkrets}&lt;/p>
         &lt;p class="ledamotText">&lt;span class="ledamotTextBold">E-post: &lt;/span>${epost}&lt;/p>
         &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Mer info: &lt;/span>&lt;a href="#" class="ledamot-namn" data-id="${ledamot.intressent_id}">Klicka här&lt;/a>&lt;/p>
         &lt;hr>&lt;br>`;
         
-
-    
 
         console.log("Logotyp-URL: " + logoHTML);
     }
@@ -367,8 +431,22 @@ tbodyEl.innerHTML = "";
         document.querySelector(".ledamotDetalj").scrollIntoView({ behavior: "smooth" });
     });
 
-    visaInfoKnappEl.innerHTML = 'Visa info &lt;i class="fa-solid fa-angle-down">&lt;/i>';
-});
+  
+        visaInfoKnappEl.innerHTML = 'Visa info &lt;i class="fa-solid fa-angle-down">&lt;/i>';
+    });
+
+    //Har ovan gjort varje namn till en "död" #-länk (för att bli klickbar) med en class och här ges de ett unikt ID för att kunna generear rätt individuell ledamot-info. IDt som används hämtas från APIet som smidigt nog hade ett unikt ID på varje ledamot.
+        document.querySelectorAll(".parti-namn").forEach(link => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            let partiTitle = link.getAttribute("data-title");
+            visaPartiInfo(partiTitle);
+
+            // Scrolla ner till inforutan när den blivit synlig
+            document.querySelector("#partiInfo").scrollIntoView({ behavior: "smooth" });
+        });
+        
+    });
 
 }
 
@@ -575,8 +653,8 @@ async function visaEnsklidLedamotInfo(id) {
 
     console.log("ledamotDetaljEl = " + ledamotDetaljEl);
 
-    const allLedamoter = filteredLedamoter.length > 0 ? filteredLedamoter : ledamoter;
-    const ledamot = allLedamoter.find(p => p.intressent_id === id);
+    const allaLedamoter = filteredLedamoter.length > 0 ? filteredLedamoter : ledamoter;
+    const ledamot = allaLedamoter.find(p => p.intressent_id === id);
     if (!ledamot) return;
 
     let riksdagsuppdragObjekt = ledamot.personuppgift?.uppgift?.find(u => u.kod === "Uppdrag inom riksdag och regering");
@@ -617,9 +695,10 @@ async function visaEnsklidLedamotInfo(id) {
         : "Ingen info";
 
     //Loggan hämtas från Wikipedias API och behöver därför en await här.
-    let logoUrl = await getPartiInfo(ledamot.parti);
+    let logoUrl = await getPartiLogo(ledamot.parti);
+    let altText = partiFullName[ledamot.parti];
     let logoHTML = logoUrl
-        ? `&lt;img src="${logoUrl}" alt="${ledamot.parti} logotyp" style="height:50px;">`
+        ? `&lt;img src="${logoUrl}" alt="${altText} logotyp" style="height:50px;">`
         : "Ingen logo";
 
     console.log('ledamotDetaljTextEl:', ledamotDetaljTextEl);
@@ -636,6 +715,8 @@ async function visaEnsklidLedamotInfo(id) {
     `&lt;p class="ledamotText">${logoHTML}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Namn: &lt;/span>${ledamot.tilltalsnamn} ${ledamot.efternamn}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Född: &lt;/span>${ledamot.fodd_ar}&lt;/p>
+    &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Parti: &lt;/span>${partiFullName[ledamot.parti] || ledamot.parti} (${ledamot.parti})&lt;/p>
+    &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Valkrets: &lt;/span>${ledamot.valkrets}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Uppdrag inom riksdag och regering: &lt;/span>${riksdagsuppdrag}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Uppdrag inom statliga myndigheter m.m.: &lt;/span>${myndighetsuppdrag}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Uppdrag inom förenings- och näringsliv: &lt;/span>${foreningsuppdrag}&lt;/p>
@@ -643,6 +724,7 @@ async function visaEnsklidLedamotInfo(id) {
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Utbildning: &lt;/span>${utbildning}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">Tidigare anställningar: &lt;/span>${anstallningar}&lt;/p>
     &lt;p class="ledamotText">&lt;span class="ledamotTextBold">E-post: &lt;/span>${epost}&lt;/p>
+    
     &lt;button id="stangDetalj">&lt;i class="fa-solid fa-square-xmark">&lt;/i> Stäng&lt;/button>`;
 
     
@@ -660,7 +742,55 @@ async function visaEnsklidLedamotInfo(id) {
 }
 
 
-</code></pre>
+/**
+* //Funktion som gör att det visas enskild info om det parti man klickar på (partinamnet är klickbart) i tabellen med sökträffar.
+* @param {string} partiTitle -En variabel som innehåller sökresultatets ledamöters partinamn (ursprungligen ifrån riksdagens API men omdöpt högre upp i koden för att överensstämma med Wikipedias API).
+*/
+async function visaPartiInfo(partiTitle) {
+    console.log("Här fortsätter min funktion visaPartiInfo...");
+
+    console.log("partiTitle = " + partiTitle);
+    console.log("partiDetaljEl = " ,partiDetaljEl);
+
+  
+
+    //Loggan hämtas från Wikipedias API och behöver därför en await här.
+    let wikiData = await getPartiInfo(partiTitle);
+    console.log("wikiData = " ,wikiData);
+    let logoHTML = wikiData.logoUrl
+        ? `&lt;img src="${wikiData.logoUrl}" alt="${partiTitle} logotyp" style="height:100px;">`
+        : "Ingen logo";
+
+    console.log("logoUrl2 = " + wikiData.logoUrl);
+    console.log("partiDetaljEl igen = " ,partiDetaljEl);
+
+
+    let infoText = wikiData.partiInfo || "ingen info tillgänglig.";
+    console.log('partiTextEl:', partiDetaljTextEl);
+
+    console.log("Klick på parti med namn:", partiTitle);
+
+    console.log("wikiData = " ,wikiData);
+
+    partiDetaljTextEl.innerHTML =
+    `&lt;p class="partiLogo">${logoHTML}&lt;/p>
+    &lt;p class="partiText">${infoText}&lt;/p>
+    &lt;p class="partiText>&lt;span class="partiTextBold">Källa (och mer info): &lt;/span>&lt;a href="https://sv.wikipedia.org/wiki/${partiTitle}" target="_blank">https://sv.wikipedia.org/wiki/${partiTitle}&lt;/a>&lt;/p>
+
+    &lt;button id="stangDetalj2">&lt;i class="fa-solid fa-square-xmark">&lt;/i> Stäng&lt;/button>`;
+
+    
+    partiDetaljEl.style.visibility = "visible";
+    
+    //Händelselyssnare till knappen som skapas ovan som gör att display på infon ändras från flex till none (döljs).
+    document.querySelector("#stangDetalj2").addEventListener("click", () => {
+        partiDetaljEl.style.visibility = "hidden";
+        partiDetaljTextEl.innerHTML = "";
+
+    // Scrolla upp till tabellen när inforutan döljs
+    document.querySelector(".ledamotTabell").scrollIntoView({ behavior: "smooth" });
+    });
+}</code></pre>
         </article>
     </section>
 
@@ -670,13 +800,13 @@ async function visaEnsklidLedamotInfo(id) {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#applyFilters">applyFilters</a></li><li><a href="global.html#dataToTable">dataToTable</a></li><li><a href="global.html#filterLedamoter">filterLedamoter</a></li><li><a href="global.html#getLedamoter">getLedamoter</a></li><li><a href="global.html#getPartiInfo">getPartiInfo</a></li><li><a href="global.html#renderPagination">renderPagination</a></li><li><a href="global.html#sortLedamoter1">sortLedamoter1</a></li><li><a href="global.html#sortLedamoter2">sortLedamoter2</a></li><li><a href="global.html#sortLedamoter3">sortLedamoter3</a></li><li><a href="global.html#sortLedamoter4">sortLedamoter4</a></li><li><a href="global.html#updateTable">updateTable</a></li><li><a href="global.html#visaAllaLedamotInfo">visaAllaLedamotInfo</a></li><li><a href="global.html#visaEnsklidLedamotInfo">visaEnsklidLedamotInfo</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#applyFilters">applyFilters</a></li><li><a href="global.html#dataToTable">dataToTable</a></li><li><a href="global.html#filterLedamoter">filterLedamoter</a></li><li><a href="global.html#getLedamoter">getLedamoter</a></li><li><a href="global.html#getPartiInfo">getPartiInfo</a></li><li><a href="global.html#getPartiLogo">getPartiLogo</a></li><li><a href="global.html#renderPagination">renderPagination</a></li><li><a href="global.html#sortLedamoter1">sortLedamoter1</a></li><li><a href="global.html#sortLedamoter2">sortLedamoter2</a></li><li><a href="global.html#sortLedamoter3">sortLedamoter3</a></li><li><a href="global.html#sortLedamoter4">sortLedamoter4</a></li><li><a href="global.html#updateTable">updateTable</a></li><li><a href="global.html#visaAllaLedamotInfo">visaAllaLedamotInfo</a></li><li><a href="global.html#visaEnsklidLedamotInfo">visaEnsklidLedamotInfo</a></li><li><a href="global.html#visaPartiInfo">visaPartiInfo</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Jul 29 2025 15:11:23 GMT+0200 (Central European Summer Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Aug 01 2025 18:58:08 GMT+0200 (Central European Summer Time)
 </footer>
 
 <script> prettyPrint(); </script>
