@@ -697,7 +697,7 @@ async function visaEnsklidLedamotInfo(id) {
     <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
     <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
     <br>
-    <p class="ledamotText"><span class="ledamotTextBold">Källa: </span><a href="https://www.riksdagen.se/sv/ledamoter-och-partier/ledamoterna/" target="_blank">https://www.riksdagen.se/sv/ledamoter-och-partier/ledamoterna/</a></p>
+    <p class="ledamotText"><span class="ledamotTextBold">Källa: </span><a href="https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}" target="_blank">https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}</a></p>
     
     <button id="stangDetalj"><i class="fa-solid fa-square-xmark"></i> Stäng</button>`;
 
