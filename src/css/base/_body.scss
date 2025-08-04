@@ -1,5 +1,9 @@
 @use "../abstracts/variables" as *;
 
+/* Normalizer */
+@import url(https://necolas.github.io/normalize.css/8.0.1/normalize.css);
+
+
 //Testar använding av placeholder och @extend (selector inheritance) inom samma scss-fil (eftersom Parcel kraschar när de barta ligger i min _variables.scss)
 
 %default {

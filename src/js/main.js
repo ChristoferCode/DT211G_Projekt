@@ -697,7 +697,7 @@ async function visaEnsklidLedamotInfo(id) {
     <p class="ledamotText"><span class="ledamotTextBold">Tidigare anställningar: </span>${anstallningar}</p>
     <p class="ledamotText"><span class="ledamotTextBold">E-post: </span>${epost}</p>
     <br>
-    <p class="ledamotText"><span class="ledamotTextBold">Källa: </span><a href="https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}" target="_blank">https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}</a></p>
+    <p class="ledamotText"><span class="ledamotTextBold">Källa (och mer info): </span><a href="https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}" target="_blank">https://www.riksdagen.se/sv/ledamoter-och-partier/ledamot/${ledamot.tilltalsnamn}-${ledamot.efternamn}_${ledamot.sourceid}</a></p>
     
     <button id="stangDetalj"><i class="fa-solid fa-square-xmark"></i> Stäng</button>`;
 
@@ -749,7 +749,8 @@ async function visaPartiInfo(partiTitle) {
     partiDetaljTextEl.innerHTML =
     `<p class="partiLogo">${logoHTML}</p>
     <p class="partiText">${infoText}</p>
-    <p class="partiText><span class="partiTextBold">Källa (och mer info): </span><a href="https://sv.wikipedia.org/wiki/${partiTitle}" target="_blank">https://sv.wikipedia.org/wiki/${partiTitle}</a></p>
+    <br>
+    <p class="partiText2"><span class="partiTextBold">Källa (och mer info): </span><a href="https://sv.wikipedia.org/wiki/${partiTitle}" target="_blank">https://sv.wikipedia.org/wiki/${partiTitle}</a></p>
 
     <button id="stangDetalj2"><i class="fa-solid fa-square-xmark"></i> Stäng</button>`;
 
