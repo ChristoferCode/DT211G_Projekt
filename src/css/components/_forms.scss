@@ -115,15 +115,19 @@
     padding: 5px 10px;
     border-radius: 10px;
     margin-right: 10px;
+    transition: 0.5s;
 }
 
 .prevPage:hover {
     background-color: blue;
     cursor: pointer;
+    transform: translateX(-5px);
 }
 
 .prevPage:disabled {
     background-color: lightskyblue;
+    transform: translateX(0px);
+    cursor: auto;
 }
 
 .pageInfo {
@@ -136,15 +140,19 @@
     padding: 5px 10px;
     border-radius: 10px;
     margin-left: 10px;
+    transition: 0.5s;
 }
 
 .nextPage:hover {
     background-color: blue;
     cursor: pointer;
+    transform: translateX(5px);
 }
 
 .nextPage:disabled {
     background-color: lightskyblue;
+    transform: translateX(0px);
+    cursor: auto;
 }
 
 .search {
@@ -182,9 +190,11 @@
     color: white;
     padding: 5px 10px;
     border-radius: 10px;
+
 }
 
 #visaInfoKnapp:hover {
     background-color: blue;
     cursor: pointer;
+   
 }

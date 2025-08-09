@@ -56,6 +56,14 @@
     text-shadow: rgb(255, 255, 255) 0px 2px 8px;
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
 table {
     border: 15px solid rgb(242, 255, 64);
     margin: 0 auto;
